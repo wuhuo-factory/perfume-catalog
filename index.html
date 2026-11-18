@@ -4,7 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="no-referrer" />
-  <title>Perfume Catalog</title>
+  <title>WuHuo Factory · Perfume Catalog</title>
+  <meta name="description" content="Explore 176 designer & niche fragrances from WuHuo Factory. USA warehouse, 2-5 days fast delivery. Choose styles, set quantities, and send your selection for a quote." />
+
+  <!-- Open Graph / Social Share Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://wuhuo-factory.github.io/perfume-catalog/" />
+  <meta property="og:title" content="WuHuo Factory · Perfume Catalog (#01–#176)" />
+  <meta property="og:description" content="Explore 176 fragrances · USA warehouse, 2-5 fast delivery! Choose your styles, set quantities, and send your selection for a quote." />
+  <meta property="og:image" content="https://wsrv.nl/?url=perfume-catalog.akazhiyu.chatgpt.site/images/001.webp&w=800&output=jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23181512'/%3E%3Crect x='25' y='10' width='14' height='6' rx='2' fill='none' stroke='%23B89146' stroke-width='3.5'/%3E%3Cpath d='M28 16v5h8v-5' fill='none' stroke='%23B89146' stroke-width='3.5'/%3E%3Crect x='16' y='21' width='32' height='31' rx='6' fill='none' stroke='%23B89146' stroke-width='3.5'/%3E%3Crect x='23' y='30' width='18' height='13' rx='2.5' fill='none' stroke='%23B89146' stroke-width='3'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://i0.wp.com" crossorigin />
   <link rel="preconnect" href="https://wsrv.nl" crossorigin />
@@ -466,7 +476,7 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0.75rem;
       align-content: start;
-      align-items: start;
+      align-items: stretch;
     }
     @media (min-width: 640px) {
       #perfumes-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
@@ -488,6 +498,7 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      height: 100%;
       box-shadow: var(--shadow-soft);
       position: relative;
     }
@@ -500,6 +511,7 @@
       position: relative;
       width: 100%;
       aspect-ratio: 1 / 1;
+      flex-shrink: 0;
       background: #F6F2EA;
       overflow: hidden;
       cursor: pointer;
@@ -508,6 +520,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       display: block;
     }
 
@@ -579,12 +592,16 @@
       color: var(--text-secondary);
       font-weight: 700;
       margin-bottom: 0.25rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .card-title {
       font-size: 0.75rem;
       font-weight: 700;
       color: var(--text-primary);
       line-height: 1.3;
+      min-height: 2.6em;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -596,7 +613,8 @@
 
     .btn-add-card {
       width: 100%;
-      padding: 0.45rem 0.875rem;
+      height: 2.25rem;
+      padding: 0 0.75rem;
       border-radius: 0.75rem;
       background: var(--text-primary);
       color: var(--bg-primary);
@@ -609,14 +627,13 @@
       align-items: center;
       justify-content: center;
     }
-    @media (min-width: 640px) {
-      .btn-add-card { padding: 0.5rem 0.875rem; }
-    }
     .btn-add-card:hover {
       background: #2E2924;
     }
 
     .card-stepper {
+      width: 100%;
+      height: 2.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -624,11 +641,11 @@
       background: var(--bg-primary);
       border: 1px solid var(--accent-gold);
       border-radius: 0.75rem;
-      padding: 0.25rem;
+      padding: 0.2rem 0.25rem;
     }
     .stepper-btn-dec {
-      width: 1.75rem;
-      height: 1.75rem;
+      width: 1.7rem;
+      height: 1.7rem;
       border-radius: 0.5rem;
       background: #FFFFFF;
       color: var(--text-primary);
@@ -641,8 +658,8 @@
       justify-content: center;
     }
     .stepper-btn-inc {
-      width: 1.75rem;
-      height: 1.75rem;
+      width: 1.7rem;
+      height: 1.7rem;
       border-radius: 0.5rem;
       background: var(--text-primary);
       color: var(--bg-primary);
@@ -1701,65 +1718,82 @@
         171: { note: "Perfect Eau de Parfum", volume: "100ML" }
       };
 
-      const DIRECT_UPLOAD_IDS = new Set([14, 61, 171]);
+      // Exact uploaded files for #14, #61, #171 (e.g. images/14正.webp)
+      const CUSTOM_IMAGE_MAP = {
+        14: './images/14%E6%AD%A3.webp',
+        61: './images/61%E6%AD%A3.webp',
+        171: './images/171%E6%AD%A3.webp'
+      };
 
       // Distribute across 3 independent CDN domains to bypass WeChat's 6-connection-per-domain cap
-      function getShardedCdnUrls(num) {
+      function getShardedCdnUrls(num, highRes = false) {
         const n3 = String(num).padStart(3, '0');
+        const width = highRes ? 1000 : 300;
+        const quality = highRes ? 88 : 72;
         const shards = [
-          `https://i0.wp.com/perfume-catalog.akazhiyu.chatgpt.site/images/${n3}.webp?w=300&quality=72`,
-          `https://wsrv.nl/?url=perfume-catalog.akazhiyu.chatgpt.site/images/${n3}.webp&w=300&q=72&output=webp`,
-          `https://images.weserv.nl/?url=perfume-catalog.akazhiyu.chatgpt.site/images/${n3}.webp&w=300&q=72&output=webp`
+          `https://i0.wp.com/perfume-catalog.akazhiyu.chatgpt.site/images/${n3}.webp?w=${width}&quality=${quality}`,
+          `https://wsrv.nl/?url=perfume-catalog.akazhiyu.chatgpt.site/images/${n3}.webp&w=${width}&q=${quality}&output=webp`,
+          `https://images.weserv.nl/?url=perfume-catalog.akazhiyu.chatgpt.site/images/${n3}.webp&w=${width}&q=${quality}&output=webp`
         ];
         const offset = num % 3;
-        return [
-          shards[offset],
-          shards[(offset + 1) % 3],
-          shards[(offset + 2) % 3],
-          `${ORIGIN_IMAGE_BASE}${n3}.webp`
-        ];
+        return highRes
+          ? [`${ORIGIN_IMAGE_BASE}${n3}.webp`, shards[offset], shards[(offset + 1) % 3], shards[(offset + 2) % 3]]
+          : [shards[offset], shards[(offset + 1) % 3], shards[(offset + 2) % 3], `${ORIGIN_IMAGE_BASE}${n3}.webp`];
       }
 
-      function getCandidateUrls(num) {
+      function getCandidateUrls(num, highRes = false) {
         const n1 = String(num);
         const n2 = String(num).padStart(2, '0');
         const n3 = String(num).padStart(3, '0');
 
         const localVariants = [
+          `./images/${n1}%E6%AD%A3.webp`,
+          `./images/${n1}%E6%AD%A3.WEBP`,
+          `./images/${n2}%E6%AD%A3.webp`,
+          `./images/${n3}%E6%AD%A3.webp`,
+          `./images/${n1}.webp`,
+          `./images/${n1}.WEBP`,
+          `./images/${n3}.webp`,
+          `./images/${n3}.WEBP`,
+          `./images/${n1}%E6%AD%A3.jpg`,
+          `./images/${n1}%E6%AD%A3.JPG`,
+          `./images/${n2}%E6%AD%A3.jpg`,
+          `./images/${n2}%E6%AD%A3.JPG`,
           `./images/${n1}.jpg`,
           `./images/${n1}.JPG`,
           `./images/${n3}.jpg`,
           `./images/${n3}.JPG`,
           `./images/${n2}.jpg`,
           `./images/${n2}.JPG`,
-          `./images/${n1}.webp`,
-          `./images/${n1}.WEBP`,
-          `./images/${n3}.webp`,
-          `./images/${n3}.WEBP`,
           `./images/${n1}.png`,
           `./images/${n1}.PNG`,
           `./images/${n1}.jpeg`,
           `./images/${n1}.JPEG`,
-          `./images/${n1}%E6%AD%A3.jpg`,
-          `./images/${n1}%E6%AD%A3.JPG`,
-          `./images/${n2}%E6%AD%A3.jpg`,
-          `./images/${n2}%E6%AD%A3.JPG`,
+          `./${n1}%E6%AD%A3.webp`,
           `./${n1}.jpg`,
           `./${n1}.JPG`,
           `./${n3}.webp`,
           `./${n3}.WEBP`
         ];
 
-        const shardedCdns = getShardedCdnUrls(num);
+        const shardedCdns = getShardedCdnUrls(num, highRes);
 
-        if (DIRECT_UPLOAD_IDS.has(num) || localFolderMode === 'images') {
+        if (CUSTOM_IMAGE_MAP[num]) {
+          return Array.from(new Set([
+            CUSTOM_IMAGE_MAP[num],
+            `./${n1}%E6%AD%A3.webp`,
+            ...localVariants,
+            ...shardedCdns
+          ]));
+        }
+        if (localFolderMode === 'images') {
           return Array.from(new Set([...localVariants, ...shardedCdns]));
         }
         if (localFolderMode === 'root') {
-          return Array.from(new Set([`./${n1}%E6%AD%A3.jpg`, `./${n2}%E6%AD%A3.jpg`, `./${n1}.jpg`, `./${n1}.JPG`, ...shardedCdns]));
+          return Array.from(new Set([`./${n1}%E6%AD%A3.webp`, `./${n1}%E6%AD%A3.jpg`, `./${n2}%E6%AD%A3.jpg`, `./${n1}.jpg`, `./${n1}.JPG`, ...shardedCdns]));
         }
         if (localFolderMode === 'pad2') {
-          return Array.from(new Set([`./${n2}%E6%AD%A3.jpg`, `./${n1}%E6%AD%A3.jpg`, `./${n2}.jpg`, `./${n2}.JPG`, ...shardedCdns]));
+          return Array.from(new Set([`./${n2}%E6%AD%A3.webp`, `./${n2}%E6%AD%A3.jpg`, `./${n1}%E6%AD%A3.jpg`, `./${n2}.jpg`, `./${n2}.JPG`, ...shardedCdns]));
         }
         return Array.from(new Set([...shardedCdns, ...localVariants]));
       }
@@ -1787,7 +1821,8 @@
       };
 
       window.__onCatalogImgErr = function (imgEl, id) {
-        const candidates = getCandidateUrls(id);
+        const isHighRes = imgEl.id === 'modal-image';
+        const candidates = getCandidateUrls(id, isHighRes);
         const nextStage = parseInt(imgEl.dataset.stage || '0', 10) + 1;
         if (nextStage < candidates.length) {
           imgEl.dataset.stage = String(nextStage);
@@ -1800,19 +1835,27 @@
         }
       };
 
-      // Recover any aborted or empty images when exiting and re-entering WebView
+      // Recover any aborted or stalled images in/near viewport
       function recoverStalledImages() {
         const imgs = document.querySelectorAll('img[data-pid]');
         imgs.forEach(img => {
+          if (img.dataset.ok === '1') return;
+          if (img.id === 'modal-image' && !detailsDialog.open) return;
+
           const isBroken = img.complete && img.naturalWidth === 0;
-          const isStuck = !img.complete && img.dataset.ok !== '1';
+          const rect = img.getBoundingClientRect();
+          const nearViewport = rect.bottom >= -300 && rect.top <= window.innerHeight + 600;
+          const isStuck = !img.complete && nearViewport;
+
           if (isBroken || isStuck) {
             const id = parseInt(img.dataset.pid, 10);
-            const candidates = getCandidateUrls(id);
+            const isHighRes = img.id === 'modal-image';
+            const candidates = getCandidateUrls(id, isHighRes);
             const curStage = parseInt(img.dataset.stage || '0', 10);
             const nextStage = isBroken ? (curStage + 1) % candidates.length : curStage;
             img.dataset.stage = String(nextStage);
             const baseUrl = candidates[nextStage];
+            if (!baseUrl || baseUrl.startsWith('data:')) return;
             const sep = baseUrl.includes('?') ? '&' : '?';
             img.src = baseUrl + sep + '_r=' + Date.now();
           }
@@ -1859,6 +1902,8 @@
       let showSelectedOnly = false;
       let currentModalProductId = 1;
       let toastTimeout = null;
+      let modalHistoryPushed = false;
+      let isClosingFromPopstate = false;
 
       // DOM References
       const perfumesGrid = document.getElementById('perfumes-grid');
@@ -1886,6 +1931,8 @@
       const modalBrandTitle = document.getElementById('modal-brand-title');
       const modalCustomSubtitle = document.getElementById('modal-custom-subtitle');
       const modalQtyInput = document.getElementById('modal-qty-input');
+      const modalPrevBtn = document.getElementById('modal-prev-btn');
+      const modalNextBtn = document.getElementById('modal-next-btn');
 
       const selectionDialog = document.getElementById('selection-dialog');
       const drawerTitleCount = document.getElementById('drawer-title-count');
@@ -1900,6 +1947,15 @@
 
       const statusToast = document.getElementById('status-toast');
       const statusToastText = document.getElementById('status-toast-text');
+
+      function pushModalHistoryIfNeeded() {
+        if (!modalHistoryPushed) {
+          try {
+            history.pushState({ wuhuoModal: true }, '');
+            modalHistoryPushed = true;
+          } catch (e) {}
+        }
+      }
 
       function showToast(message) {
         statusToastText.textContent = message;
@@ -2002,6 +2058,7 @@
 
       function showManualCopyFallback(text) {
         if (!selectionDialog.open) {
+          pushModalHistoryIfNeeded();
           selectionDialog.showModal();
         }
         manualCopyTextarea.value = text;
@@ -2140,7 +2197,7 @@
       function buildCardHtml(item, globalIndex) {
         const qty = selection[item.id] || 0;
         const isSelected = qty > 0;
-        const primaryUrl = getCandidateUrls(item.id)[0];
+        const primaryUrl = getCandidateUrls(item.id, false)[0];
         const isEager = globalIndex < 8;
         return `
           <article class="perfume-card ${isSelected ? 'is-selected' : ''}" data-product-id="${item.id}">
@@ -2283,7 +2340,7 @@
           selectionItemsList.innerHTML = ids.map(id => {
             const item = catalog[id - 1];
             const qty = selection[id];
-            const thumbUrl = getCandidateUrls(item.id)[0];
+            const thumbUrl = getCandidateUrls(item.id, false)[0];
             return `
               <div class="drawer-item-row">
                 <div class="drawer-item-left" data-drawer-open-details="${item.id}">
@@ -2335,30 +2392,62 @@
         }
       }
 
+      function getModalNavList() {
+        const list = currentFilteredList.length > 0 ? currentFilteredList : catalog;
+        const idx = list.findIndex(item => item.id === currentModalProductId);
+        if (idx === -1) {
+          return { list: catalog, idx: currentModalProductId - 1 };
+        }
+        return { list, idx };
+      }
+
+      function navigateDetailsModal(delta) {
+        const { list, idx } = getModalNavList();
+        if (list.length <= 1) return;
+        const targetIdx = (idx + delta + list.length) % list.length;
+        openDetailsModal(list[targetIdx].id);
+      }
+
       function openDetailsModal(id) {
         const numericId = parseInt(id, 10);
         if (isNaN(numericId) || numericId < 1 || numericId > TOTAL_STYLES) return;
         currentModalProductId = numericId;
         const item = catalog[numericId - 1];
         const qty = selection[numericId] || 0;
+        const { list, idx } = getModalNavList();
 
         modalImageZoomWrap.classList.remove('zoomed');
         modalCodeBadge.textContent = item.code;
-        modalPositionIndicator.textContent = `Style ${item.code} of ${TOTAL_STYLES}`;
+        if (list.length < TOTAL_STYLES) {
+          modalPositionIndicator.textContent = `Style ${item.code} (${idx + 1} of ${list.length})`;
+        } else {
+          modalPositionIndicator.textContent = `Style ${item.code} of ${TOTAL_STYLES}`;
+        }
+
+        const showNavBtns = list.length > 1;
+        modalPrevBtn.classList.toggle('hidden', !showNavBtns);
+        modalNextBtn.classList.toggle('hidden', !showNavBtns);
+
         modalBrandTitle.textContent = item.brand;
         modalCustomSubtitle.textContent = item.note
           ? `${item.note} (${item.volume}) · USA Warehouse Fast Delivery`
           : `Catalog Style ${item.code} (${item.volume}) · USA Warehouse Fast Delivery`;
 
+        modalImage.dataset.pid = String(numericId);
         modalImage.dataset.stage = '0';
+        modalImage.dataset.ok = '0';
+        modalImage.onload = function () {
+          window.__onCatalogImgLoad(modalImage);
+        };
         modalImage.onerror = function () {
           window.__onCatalogImgErr(modalImage, numericId);
         };
-        modalImage.src = getCandidateUrls(numericId)[0];
+        modalImage.src = getCandidateUrls(numericId, true)[0];
         modalImage.alt = `${item.code} ${item.brand}`;
         modalQtyInput.value = String(qty);
 
         if (!detailsDialog.open) {
+          pushModalHistoryIfNeeded();
           detailsDialog.showModal();
         }
       }
@@ -2543,6 +2632,34 @@
       dialogObserver.observe(detailsDialog, { attributes: true, attributeFilter: ['open'] });
       dialogObserver.observe(selectionDialog, { attributes: true, attributeFilter: ['open'] });
 
+      function handleDialogClosed() {
+        setTimeout(() => {
+          if (!detailsDialog.open && !selectionDialog.open && modalHistoryPushed && !isClosingFromPopstate) {
+            modalHistoryPushed = false;
+            try {
+              history.back();
+            } catch (e) {}
+          }
+        }, 20);
+      }
+
+      detailsDialog.addEventListener('close', handleDialogClosed);
+      selectionDialog.addEventListener('close', handleDialogClosed);
+
+      window.addEventListener('popstate', () => {
+        if (detailsDialog.open || selectionDialog.open) {
+          isClosingFromPopstate = true;
+          modalHistoryPushed = false;
+          if (detailsDialog.open) detailsDialog.close();
+          if (selectionDialog.open) selectionDialog.close();
+          setTimeout(() => {
+            isClosingFromPopstate = false;
+          }, 30);
+        } else {
+          modalHistoryPushed = false;
+        }
+      });
+
       document.addEventListener('touchmove', (e) => {
         if (!detailsDialog.open && !selectionDialog.open) return;
         if (!e.target.closest('dialog[open]')) {
@@ -2550,14 +2667,12 @@
         }
       }, { passive: false });
 
-      document.getElementById('modal-prev-btn').addEventListener('click', () => {
-        const prevId = currentModalProductId <= 1 ? TOTAL_STYLES : currentModalProductId - 1;
-        openDetailsModal(prevId);
+      modalPrevBtn.addEventListener('click', () => {
+        navigateDetailsModal(-1);
       });
 
-      document.getElementById('modal-next-btn').addEventListener('click', () => {
-        const nextId = currentModalProductId >= TOTAL_STYLES ? 1 : currentModalProductId + 1;
-        openDetailsModal(nextId);
+      modalNextBtn.addEventListener('click', () => {
+        navigateDetailsModal(1);
       });
 
       document.getElementById('modal-dec-btn').addEventListener('click', () => {
@@ -2597,6 +2712,7 @@
 
       document.getElementById('modal-open-selection-btn').addEventListener('click', () => {
         detailsDialog.close();
+        pushModalHistoryIfNeeded();
         selectionDialog.showModal();
       });
 
@@ -2604,20 +2720,20 @@
         if (detailsDialog.open) {
           if (e.key === 'ArrowLeft') {
             e.preventDefault();
-            const prevId = currentModalProductId <= 1 ? TOTAL_STYLES : currentModalProductId - 1;
-            openDetailsModal(prevId);
+            navigateDetailsModal(-1);
           } else if (e.key === 'ArrowRight') {
             e.preventDefault();
-            const nextId = currentModalProductId >= TOTAL_STYLES ? 1 : currentModalProductId + 1;
-            openDetailsModal(nextId);
+            navigateDetailsModal(1);
           }
         }
       });
 
       document.getElementById('open-selection-btn').addEventListener('click', () => {
+        pushModalHistoryIfNeeded();
         selectionDialog.showModal();
       });
       document.getElementById('floating-open-drawer-btn').addEventListener('click', () => {
+        pushModalHistoryIfNeeded();
         selectionDialog.showModal();
       });
       document.getElementById('close-selection-btn').addEventListener('click', () => {
