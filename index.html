@@ -1726,30 +1726,40 @@
         const n3 = String(num).padStart(3, '0');
 
         const localVariants = [
-          `./${n1}%E6%AD%A3.jpg`,
-          `./${n2}%E6%AD%A3.jpg`,
-          `./${n1}.jpg`,
-          `./${n3}.jpg`,
-          `./${n3}.webp`,
-          `./images/${n1}%E6%AD%A3.jpg`,
-          `./images/${n2}%E6%AD%A3.jpg`,
           `./images/${n1}.jpg`,
-          `./images/${n3}.webp`
+          `./images/${n1}.JPG`,
+          `./images/${n3}.jpg`,
+          `./images/${n3}.JPG`,
+          `./images/${n2}.jpg`,
+          `./images/${n2}.JPG`,
+          `./images/${n1}.webp`,
+          `./images/${n1}.WEBP`,
+          `./images/${n3}.webp`,
+          `./images/${n3}.WEBP`,
+          `./images/${n1}.png`,
+          `./images/${n1}.PNG`,
+          `./images/${n1}.jpeg`,
+          `./images/${n1}.JPEG`,
+          `./images/${n1}%E6%AD%A3.jpg`,
+          `./images/${n1}%E6%AD%A3.JPG`,
+          `./images/${n2}%E6%AD%A3.jpg`,
+          `./images/${n2}%E6%AD%A3.JPG`,
+          `./${n1}.jpg`,
+          `./${n1}.JPG`,
+          `./${n3}.webp`,
+          `./${n3}.WEBP`
         ];
 
         const shardedCdns = getShardedCdnUrls(num);
 
-        if (DIRECT_UPLOAD_IDS.has(num)) {
+        if (DIRECT_UPLOAD_IDS.has(num) || localFolderMode === 'images') {
           return Array.from(new Set([...localVariants, ...shardedCdns]));
         }
         if (localFolderMode === 'root') {
-          return Array.from(new Set([`./${n1}%E6%AD%A3.jpg`, `./${n2}%E6%AD%A3.jpg`, `./${n1}.jpg`, ...shardedCdns]));
+          return Array.from(new Set([`./${n1}%E6%AD%A3.jpg`, `./${n2}%E6%AD%A3.jpg`, `./${n1}.jpg`, `./${n1}.JPG`, ...shardedCdns]));
         }
         if (localFolderMode === 'pad2') {
-          return Array.from(new Set([`./${n2}%E6%AD%A3.jpg`, `./${n1}%E6%AD%A3.jpg`, `./${n2}.jpg`, ...shardedCdns]));
-        }
-        if (localFolderMode === 'images') {
-          return Array.from(new Set([`./images/${n1}%E6%AD%A3.jpg`, `./images/${n2}%E6%AD%A3.jpg`, `./images/${n1}.jpg`, ...shardedCdns]));
+          return Array.from(new Set([`./${n2}%E6%AD%A3.jpg`, `./${n1}%E6%AD%A3.jpg`, `./${n2}.jpg`, `./${n2}.JPG`, ...shardedCdns]));
         }
         return Array.from(new Set([...shardedCdns, ...localVariants]));
       }
