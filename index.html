@@ -2112,10 +2112,9 @@
         catalog.forEach(item => {
           counts[item.brand] = (counts[item.brand] || 0) + 1;
         });
-        const sortedBrands = Object.keys(counts).sort((a, b) => {
-          if (counts[b] !== counts[a]) return counts[b] - counts[a];
-          return a.localeCompare(b);
-        });
+        const sortedBrands = Object.keys(counts).sort((a, b) =>
+          a.localeCompare(b, 'en', { sensitivity: 'base' })
+        );
         return { counts, sortedBrands };
       }
 
