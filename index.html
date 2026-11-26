@@ -570,17 +570,15 @@
       // Distribute across 3 independent CDN domains to bypass WeChat's 6-connection-per-domain cap
       function getShardedCdnUrls(num, highRes = false) {
         const n3 = String(num).padStart(3, '0');
-        const width = highRes ? 1000 : 300;
-        const quality = highRes ? 88 : 72;
+        const width = highRes ? 800 : 300;
+        const quality = highRes ? 82 : 72;
         const shards = [
           `https://i0.wp.com/perfume-catalog.akazhiyu.chatgpt.site/images/${n3}.webp?w=${width}&quality=${quality}`,
           `https://wsrv.nl/?url=perfume-catalog.akazhiyu.chatgpt.site/images/${n3}.webp&w=${width}&q=${quality}&output=webp`,
           `https://images.weserv.nl/?url=perfume-catalog.akazhiyu.chatgpt.site/images/${n3}.webp&w=${width}&q=${quality}&output=webp`
         ];
         const offset = num % 3;
-        return highRes
-          ? [`${ORIGIN_IMAGE_BASE}${n3}.webp`, shards[offset], shards[(offset + 1) % 3], shards[(offset + 2) % 3]]
-          : [shards[offset], shards[(offset + 1) % 3], shards[(offset + 2) % 3], `${ORIGIN_IMAGE_BASE}${n3}.webp`];
+        return [shards[offset], shards[(offset + 1) % 3], shards[(offset + 2) % 3], `${ORIGIN_IMAGE_BASE}${n3}.webp`];
       }
 
       function getCandidateUrls(num, highRes = false) {
@@ -1246,6 +1244,17 @@
         openDetailsModal(list[targetIdx].id);
       }
 
+      let modalLoadToken = 0;
+      const preloadedHighRes = new Set();
+
+      function preloadHighRes(id) {
+        if (!id || preloadedHighRes.has(id) || HIDDEN_SET.has(id)) return;
+        preloadedHighRes.add(id);
+        const img = new Image();
+        img.referrerPolicy = 'no-referrer';
+        img.src = getCandidateUrls(id, true)[0];
+      }
+
       function openDetailsModal(id) {
         const numericId = parseInt(id, 10);
         if (isNaN(numericId) || numericId < 1 || numericId > TOTAL_STYLES || HIDDEN_SET.has(numericId)) return;
@@ -1271,18 +1280,57 @@
           ? `${item.note} (${item.volume}) · USA Warehouse Fast Delivery`
           : `Catalog Style ${item.code} (${item.volume}) · USA Warehouse Fast Delivery`;
 
+        const token = ++modalLoadToken;
+        const candidates = getCandidateUrls(numericId, true);
+        const cardImg = perfumesGrid.querySelector(`img[data-pid="${numericId}"]`);
+        const rawCardSrc = (cardImg && cardImg.complete && cardImg.naturalWidth > 0) ? (cardImg.currentSrc || cardImg.src) : '';
+        const cachedThumb = rawCardSrc && !rawCardSrc.startsWith('data:') ? rawCardSrc : '';
+
         modalImage.dataset.pid = String(numericId);
         modalImage.dataset.stage = '0';
-        modalImage.dataset.ok = '0';
-        modalImage.onload = function () {
-          window.__onCatalogImgLoad(modalImage);
-        };
-        modalImage.onerror = function () {
-          window.__onCatalogImgErr(modalImage, numericId);
-        };
-        modalImage.src = getCandidateUrls(numericId, true)[0];
         modalImage.alt = `${item.code} ${item.brand}`;
         modalQtyInput.value = String(qty);
+
+        if (cachedThumb) {
+          modalImage.onload = null;
+          modalImage.onerror = null;
+          modalImage.dataset.ok = '1';
+          modalImage.src = cachedThumb;
+
+          if (cachedThumb !== candidates[0]) {
+            let hiStage = 0;
+            const hiImg = new Image();
+            hiImg.referrerPolicy = 'no-referrer';
+            hiImg.onload = function () {
+              if (token !== modalLoadToken) return;
+              modalImage.src = hiImg.src;
+              preloadedHighRes.add(numericId);
+            };
+            hiImg.onerror = function () {
+              if (token !== modalLoadToken) return;
+              hiStage += 1;
+              if (hiStage < candidates.length) {
+                hiImg.src = candidates[hiStage];
+              }
+            };
+            hiImg.src = candidates[0];
+          }
+        } else {
+          modalImage.removeAttribute('src');
+          modalImage.dataset.ok = '0';
+          modalImage.onload = function () {
+            window.__onCatalogImgLoad(modalImage);
+          };
+          modalImage.onerror = function () {
+            window.__onCatalogImgErr(modalImage, numericId);
+          };
+          modalImage.src = candidates[0];
+        }
+
+        if (list.length > 1) {
+          preloadHighRes(list[(idx + 1) % list.length].id);
+          preloadHighRes(list[(idx - 1 + list.length) % list.length].id);
+        }
 
         if (!detailsDialog.open) {
           pushModalHistoryIfNeeded();
