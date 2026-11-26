@@ -1420,6 +1420,13 @@
         window.scrollTo({ top: 0, behavior: 'auto' });
       });
 
+      perfumesGrid.addEventListener('pointerdown', (e) => {
+        const trigger = e.target.closest('[data-open-details]');
+        if (trigger) {
+          preloadHighRes(parseInt(trigger.getAttribute('data-open-details'), 10));
+        }
+      }, { passive: true });
+
       perfumesGrid.addEventListener('click', (e) => {
         const actionBtn = e.target.closest('button[data-action]');
         if (actionBtn) {
