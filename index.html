@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="no-referrer" />
   <title>WuHuo Factory · Perfume Catalog</title>
-  <meta name="description" content="Explore 176 designer & niche fragrances from WuHuo Factory. USA warehouse, 2-5 days fast delivery. Choose styles, set quantities, and send your selection for a quote." />
+  <meta name="description" content="Explore 359 designer & niche fragrances from WuHuo Factory. USA warehouse, 2-5 days fast delivery. Choose styles, set quantities, and send your selection for a quote." />
 
   <!-- Open Graph / Social Share Preview -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://wuhuo-factory.github.io/perfume-catalog/" />
-  <meta property="og:title" content="WuHuo Factory · Perfume Catalog (#01–#176)" />
-  <meta property="og:description" content="Explore 176 fragrances · USA warehouse, 2-5 fast delivery! Choose your styles, set quantities, and send your selection for a quote." />
+  <meta property="og:title" content="WuHuo Factory · Perfume Catalog (#01–#359)" />
+  <meta property="og:description" content="Explore 359 fragrances · USA warehouse, 2-5 fast delivery! Choose your styles, set quantities, and send your selection for a quote." />
   <meta property="og:image" content="https://wsrv.nl/?url=perfume-catalog.akazhiyu.chatgpt.site/images/001.webp&w=800&output=jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
@@ -268,7 +268,7 @@
           <input
             type="search"
             id="catalog-search"
-            placeholder="Search #01–#176 or brand (e.g. Dior)..."
+            placeholder="Search #01–#359 or brand (e.g. Dior)..."
             aria-label="Search perfumes by style number or brand"
           />
           <button type="button" id="clear-search-btn" aria-label="Clear search" class="hidden">×</button>
@@ -276,7 +276,7 @@
       </div>
 
       <div class="header-actions">
-        <span aria-live="polite" id="styles-count-badge">176 / 176 styles</span>
+        <span aria-live="polite" id="styles-count-badge">359 / 359 styles</span>
         <button type="button" id="open-selection-btn" aria-label="Open My Selection">
           <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
@@ -325,7 +325,7 @@
       <span class="collection-hint">Click a fragrance to take a closer look</span>
     </div>
 
-    <!-- PERFUMES GRID (#01 to #176) -->
+    <!-- PERFUMES GRID (#01 to #359) -->
     <section aria-label="Perfumes" id="perfumes-grid"></section>
     <div id="load-more-sentinel" aria-hidden="true"></div>
 
@@ -333,8 +333,8 @@
     <div id="empty-filter-state" class="hidden">
       <div class="empty-icon">#</div>
       <h3 class="empty-title">No matching fragrances found</h3>
-      <p class="empty-desc">Try searching another style number (#01–#176) or selecting a different brand.</p>
-      <button type="button" id="empty-reset-btn">Show all 176 styles</button>
+      <p class="empty-desc">Try searching another style number (#01–#359) or selecting a different brand.</p>
+      <button type="button" id="empty-reset-btn">Show all 359 styles</button>
     </div>
   </main>
 
@@ -378,7 +378,7 @@
       <div class="details-info">
         <div>
           <div class="details-top-row">
-            <span id="modal-position-indicator">Style #01 of 176</span>
+            <span id="modal-position-indicator">Style #01 of 359</span>
             <button type="button" id="close-details-btn" class="modal-close-btn" aria-label="Close details">×</button>
           </div>
 
@@ -485,7 +485,7 @@
       'use strict';
 
       const ORIGIN_IMAGE_BASE = 'https://perfume-catalog.akazhiyu.chatgpt.site/images/';
-      const TOTAL_STYLES = 176;
+      const TOTAL_STYLES = 359;
       const BATCH_SIZE = 24;
       const STORAGE_KEY_SELECTION = 'wuhuo_perfume_selection_176_v1';
 
@@ -506,7 +506,7 @@
       let currentFilteredList = [];
       let renderedCount = 0;
 
-      const EXACT_BRANDS_1_TO_176 = [
+      const EXACT_BRANDS_1_TO_359 = [
         "Dior", "Tom Ford", "Chanel", "Creed", "Maison Francis Kurkdjian",
         "Valentino", "Yves Saint Laurent", "Yves Saint Laurent", "Versace", "Carolina Herrera",
         "Yves Saint Laurent", "Valentino", "Louis Vuitton", "Paco Rabanne", "Xerjoff",
@@ -542,7 +542,43 @@
         "Kayali", "Kayali", "Kayali", "Kayali", "Valentino",
         "Valentino", "Bond No. 9", "Bond No. 9", "Bond No. 9", "Marc Jacobs",
         "Marc Jacobs", "Yves Saint Laurent", "Louis Vuitton", "Carolina Herrera", "Gucci",
-        "Gucci"
+        "Gucci", "Paco Rabanne", "Louis Vuitton", "Dior", "Carolina Herrera",
+        "Jean Paul Gaultier", "Armani", "Parfums de Marly", "Xerjoff", "Chanel",
+        "Louis Vuitton", "Parfums de Marly", "Louis Vuitton", "Burberry", "Paco Rabanne",
+        "Yves Saint Laurent", "Le Labo", "Yves Saint Laurent", "Dior", "Valentino",
+        "Valentino", "Gucci", "Armani", "Versace", "Valentino",
+        "Chanel", "Le Labo", "Paco Rabanne", "Bond No. 9", "Bond No. 9",
+        "Jean Paul Gaultier", "Jean Paul Gaultier", "Fragrance Favorites", "Prada", "Carolina Herrera",
+        "Louis Vuitton", "Valentino", "Louis Vuitton", "Chanel", "Yves Saint Laurent",
+        "Viktor & Rolf", "Carolina Herrera", "Byredo", "Armani", "Penhaligon's",
+        "Dior", "Afnan", "Paco Rabanne", "Yves Saint Laurent", "Paco Rabanne",
+        "Moschino", "Moschino", "Marc Jacobs", "Afnan", "Prada",
+        "Paco Rabanne", "Versace", "Dior", "Paco Rabanne", "Bond No. 9",
+        "Viktor & Rolf", "Paco Rabanne", "Armani", "Chanel", "Louis Vuitton",
+        "Louis Vuitton", "Paco Rabanne", "Armani", "Parfums de Marly", "Versace",
+        "Prada", "Dior", "Jo Malone", "Valentino", "Louis Vuitton",
+        "Carolina Herrera", "Parfums de Marly", "Paco Rabanne", "Carolina Herrera", "Carolina Herrera",
+        "Givenchy", "Creed", "Paco Rabanne", "Creed", "Creed",
+        "Creed", "Paco Rabanne", "Carolina Herrera", "Paco Rabanne", "Armani",
+        "Gucci", "Gucci", "Chanel", "Armani", "Marc Jacobs",
+        "Versace", "Valentino", "Yves Saint Laurent", "Carolina Herrera", "Versace",
+        "Valentino", "Kayali", "Versace", "Jean Paul Gaultier", "Jean Paul Gaultier",
+        "Azzaro", "Prada", "Armani", "Creed", "Creed",
+        "Le Labo", "Tom Ford", "Lancome", "Calvin Klein", "Parfums de Marly",
+        "Prada", "Dior", "Dior", "Xerjoff", "Creed",
+        "Creed", "Dior", "Dior", "Dior", "Yves Saint Laurent",
+        "Yves Saint Laurent", "Tom Ford", "Versace", "Versace", "Versace",
+        "Bvlgari", "Maison Margiela", "Hermes", "Gucci", "Burberry",
+        "Chanel", "Tom Ford", "Yves Saint Laurent", "Creed", "Maison Francis Kurkdjian",
+        "Dolce & Gabbana", "Versace", "Dior", "Carolina Herrera", "Armani",
+        "Dior", "Paco Rabanne", "Carolina Herrera", "Carolina Herrera", "Xerjoff",
+        "Burberry", "Gucci", "Yves Saint Laurent", "Bvlgari", "Maison Francis Kurkdjian",
+        "Parfums de Marly", "Parfums de Marly", "Creed", "Prada", "Xerjoff",
+        "Marc Jacobs", "Coach", "Prada", "Coach", "Jimmy Choo",
+        "Valentino", "Creed", "Creed", "Mugler", "Carolina Herrera",
+        "Paco Rabanne", "Valentino", "Valentino", "Chanel", "Armani",
+        "Kilian", "Louis Vuitton", "Louis Vuitton", "Chanel", "Chanel",
+        "Chanel", "Le Labo", "Louis Vuitton", "Yves Saint Laurent"
       ];
 
       const VERIFIED_DETAILS = {
@@ -685,7 +721,7 @@
       let catalog = [];
       let visibleCatalog = [];
       function buildCatalog() {
-        catalog = EXACT_BRANDS_1_TO_176.slice(0, TOTAL_STYLES).map((defaultBrand, idx) => {
+        catalog = EXACT_BRANDS_1_TO_359.slice(0, TOTAL_STYLES).map((defaultBrand, idx) => {
           const id = idx + 1;
           const verified = VERIFIED_DETAILS[id] || {};
           const code = formatStyleCode(id);
@@ -813,7 +849,7 @@
       function buildQuoteText() {
         const { ids, totalStyles, totalItems } = getSelectionTotals();
         if (totalStyles === 0) {
-          return 'Hello WuHuo Factory, I would like to inquire about your perfume catalog (YYX-01 to YYX-176).';
+          return 'Hello WuHuo Factory, I would like to inquire about your perfume catalog (YYX-01 to YYX-359).';
         }
         const lines = [
           'Hello WuHuo Factory, here is my fragrance selection for a quote:',
