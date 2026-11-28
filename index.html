@@ -68,26 +68,14 @@
       #styles-count-badge { display: inline-block; font-size: 0.875rem; }
       #open-selection-btn { padding: 0.5rem 1rem; font-size: 0.875rem; gap: 0.5rem; }
     }
-    @media (min-width: 1024px) {
-      .header-inner { padding: 0.875rem 2rem; }
-    }
+    @media (min-width: 1024px) { .header-inner { padding: 0.875rem 2rem; } }
 
     /* Main & Hero */
     main { flex: 1; max-width: 80rem; width: 100%; margin: 0 auto; padding: 1.25rem 1rem 6rem; min-height: 75vh; }
     @media (min-width: 640px) { main { padding: 2rem 1.5rem 6rem; } }
     @media (min-width: 1024px) { main { padding: 2rem 2rem 6rem; } }
     .hero-section { max-width: 54rem; margin: 0 auto 1.5rem; }
-    .hero-banner {
-      text-align: center;
-      background-color: #181512;
-      background-image:
-        radial-gradient(circle at 50% -15%, rgba(184, 145, 70, 0.24) 0%, transparent 62%),
-        radial-gradient(circle at 85% 110%, rgba(140, 103, 40, 0.14) 0%, transparent 50%);
-      border: 1px solid rgba(184, 145, 70, 0.4);
-      border-radius: 1rem;
-      padding: 1.35rem 1rem 0.95rem;
-      box-shadow: 0 14px 34px -16px rgba(24, 21, 18, 0.42);
-    }
+    .hero-banner { text-align: center; background-color: #181512; background-image: radial-gradient(circle at 50% -15%, rgba(184, 145, 70, 0.24) 0%, transparent 62%), radial-gradient(circle at 85% 110%, rgba(140, 103, 40, 0.14) 0%, transparent 50%); border: 1px solid rgba(184, 145, 70, 0.4); border-radius: 1rem; padding: 1.35rem 1rem 0.95rem; box-shadow: 0 14px 34px -16px rgba(24, 21, 18, 0.42); }
     .hero-eyebrow { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.26em; color: #D8B468; margin-bottom: 0.4rem; }
     .hero-title { font-family: var(--font-serif); font-weight: 400; font-size: 1.55rem; line-height: 1.15; letter-spacing: -0.01em; color: #FAF7F2; margin: 0 0 0.5rem; }
     .hero-desc { font-size: 0.78rem; color: #C8BEB3; line-height: 1.5; max-width: 32rem; margin: 0 auto 1rem; }
@@ -265,28 +253,20 @@
 </head>
 <body>
 
-  <!-- ==================== STICKY HEADER ==================== -->
   <header class="site-header">
     <div class="header-inner">
       <a aria-label="WuHuo Factory home" href="#" id="logo-reset-link" class="logo-link">
         <b style="color: #B89146;">WuHuo Factory</b>
       </a>
-
       <div class="search-wrap">
         <div class="search-box">
           <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z" />
           </svg>
-          <input
-            type="search"
-            id="catalog-search"
-            placeholder="Search #01–#176 or brand (e.g. Dior)..."
-            aria-label="Search perfumes by style number or brand"
-          />
+          <input type="search" id="catalog-search" placeholder="Search #01–#176 or brand (e.g. Dior)..." aria-label="Search perfumes by style number or brand" />
           <button type="button" id="clear-search-btn" aria-label="Clear search" class="hidden">×</button>
         </div>
       </div>
-
       <div class="header-actions">
         <span aria-live="polite" id="styles-count-badge">175 / 175 styles</span>
         <button type="button" id="open-selection-btn" aria-label="Open My Selection">
@@ -300,15 +280,12 @@
     </div>
   </header>
 
-  <!-- ==================== MAIN CONTENT ==================== -->
   <main>
     <section class="hero-section">
       <div class="hero-banner">
         <div class="hero-eyebrow">WuHuo Factory</div>
         <h1 class="hero-title">Fragrance Wholesale Catalog</h1>
-        <p class="hero-desc">
-          Select styles &amp; quantities, then copy your list for wholesale pricing.
-        </p>
+        <p class="hero-desc">Select styles &amp; quantities, then copy your list for wholesale pricing.</p>
         <div class="hero-trust-strip">
           <span><span class="hero-trust-dot"></span>US Warehouse</span>
           <span class="hero-trust-sep">|</span>
@@ -319,18 +296,14 @@
       </div>
     </section>
 
-    <!-- BRAND FILTER NAVIGATION -->
     <nav aria-label="Filter by brand" class="brand-nav">
       <div class="brand-nav-header">
         <span class="brand-nav-label">Filter by Brand</span>
-        <div>
-          <button type="button" id="toggle-selected-only-btn" class="hidden">Show Selected Only</button>
-        </div>
+        <div><button type="button" id="toggle-selected-only-btn" class="hidden">Show Selected Only</button></div>
       </div>
       <div id="brand-pills-container"></div>
     </nav>
 
-    <!-- COLLECTION SUBHEADER BAR -->
     <div class="collection-bar">
       <div class="collection-bar-left">
         <span id="collection-label">The complete collection</span>
@@ -339,11 +312,9 @@
       <span class="collection-hint">Click a fragrance to take a closer look</span>
     </div>
 
-    <!-- PERFUMES GRID (#01 to #176) -->
     <section aria-label="Perfumes" id="perfumes-grid"></section>
     <div id="load-more-sentinel" aria-hidden="true"></div>
 
-    <!-- EMPTY SEARCH / FILTER STATE -->
     <div id="empty-filter-state" class="hidden">
       <div class="empty-icon">#</div>
       <h3 class="empty-title">No matching fragrances found</h3>
@@ -352,7 +323,6 @@
     </div>
   </main>
 
-  <!-- ==================== FLOATING SELECTION BAR ==================== -->
   <div id="floating-selection-bar" class="is-hidden">
     <div class="floating-left">
       <div id="floating-styles-badge">0</div>
@@ -363,21 +333,16 @@
     </div>
     <div class="floating-btns">
       <button type="button" id="floating-copy-btn">Copy List</button>
-      <button type="button" id="floating-open-drawer-btn">
-        <span>Review &amp; Send</span>
-        <span>→</span>
-      </button>
+      <button type="button" id="floating-open-drawer-btn"><span>Review &amp; Send</span><span>→</span></button>
     </div>
   </div>
 
-  <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <h2 class="footer-title"><b style="color: #B89146; font-weight: 700;">Fragrance Wholesale Catalog</b></h2>
     <p class="footer-sub1">US Warehouse Stock · Fast Dispatch · Factory Direct</p>
     <p class="footer-sub2">Pick styles · Set quantities · Copy list &amp; message us for wholesale pricing</p>
   </footer>
 
-  <!-- ==================== DIALOG 1: FRAGRANCE DETAILS LIGHTBOX ==================== -->
   <dialog aria-label="Fragrance details" id="details-dialog">
     <div class="details-grid">
       <div class="details-media zoom-image-container" id="modal-image-zoom-wrap">
@@ -388,23 +353,16 @@
         <button type="button" id="modal-prev-btn" class="modal-nav-btn" aria-label="Previous fragrance">←</button>
         <button type="button" id="modal-next-btn" class="modal-nav-btn" aria-label="Next fragrance">→</button>
       </div>
-
       <div class="details-info">
         <div>
           <div class="details-top-row">
             <span id="modal-position-indicator">Style #01 of 175</span>
             <button type="button" id="close-details-btn" class="modal-close-btn" aria-label="Close details">×</button>
           </div>
-
           <div class="details-eyebrow">Brand House</div>
           <h3 id="modal-brand-title">Dior</h3>
           <p id="modal-custom-subtitle">Catalog Style #01 · USA Warehouse Fast Delivery</p>
-
-          <button type="button" id="modal-filter-by-brand-btn">
-            <span>View all styles from this brand</span>
-            <span>→</span>
-          </button>
-
+          <button type="button" id="modal-filter-by-brand-btn"><span>View all styles from this brand</span><span>→</span></button>
           <div class="quick-add-box">
             <label class="quick-add-label">Quick Add Quantity</label>
             <div class="quick-add-grid">
@@ -415,7 +373,6 @@
             </div>
           </div>
         </div>
-
         <div class="details-bottom">
           <div class="details-qty-header">
             <span style="font-size:0.75rem;font-weight:600;color:var(--text-secondary);">Selected Quantity</span>
@@ -432,7 +389,6 @@
     </div>
   </dialog>
 
-  <!-- ==================== DIALOG 2: MY SELECTION ==================== -->
   <dialog aria-label="My Selection" id="selection-dialog">
     <div class="drawer-shell">
       <div class="drawer-header">
@@ -445,7 +401,6 @@
           <button type="button" id="close-selection-btn" class="modal-close-btn" aria-label="Close My Selection">×</button>
         </div>
       </div>
-
       <div class="drawer-body">
         <div id="selection-empty-state">
           <div class="drawer-empty-icon">
@@ -456,17 +411,14 @@
           <h3 class="empty-title">Your list is waiting</h3>
           <p style="font-size:0.875rem;color:var(--text-secondary);margin:0;">Add a fragrance to start your selection.</p>
         </div>
-
         <div id="selection-items-list" class="hidden"></div>
       </div>
-
       <div class="drawer-footer">
         <div class="drawer-summary-row">
           <span id="drawer-styles-selected" style="color:var(--text-secondary);font-weight:500;">0 styles selected</span>
           <strong id="drawer-items-total">0 items total</strong>
         </div>
         <p class="drawer-hint">Copy your selection and send it to us for a quote.</p>
-
         <div id="manual-copy-box" class="hidden">
           <div class="manual-copy-head">
             <span>Long-press below to copy your list:</span>
@@ -474,7 +426,6 @@
           </div>
           <textarea id="manual-copy-textarea" readonly rows="4"></textarea>
         </div>
-
         <button type="button" id="drawer-copy-btn">
           <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -485,7 +436,6 @@
     </div>
   </dialog>
 
-  <!-- ==================== LIVE STATUS TOAST ==================== -->
   <div role="status" aria-live="polite" id="status-toast">
     <div class="toast-pill">
       <span class="hero-dot"></span>
@@ -493,1194 +443,993 @@
     </div>
   </div>
 
-  <!-- ==================== APPLICATION LOGIC ==================== -->
   <script>
-    (function () {
-      'use strict';
+  (function () {
+    'use strict';
 
-      const REPO_HOST_PATH = 'wuhuo-factory.github.io/perfume-catalog/images/';
-      const REPO_IMAGE_ORIGIN = `https://${REPO_HOST_PATH}`;
-      const FILE_SUFFIX_ENC = '%E6%AD%A3.webp';
-      const ZERO_PAD2_IDS = new Set([6]);
-      const TOTAL_STYLES = 176;
-      const BATCH_SIZE = 24;
-      const STORAGE_KEY_SELECTION = 'wuhuo_perfume_selection_176_v1';
+    const REPO_HOST_PATH = 'wuhuo-factory.github.io/perfume-catalog/images/';
+    const REPO_IMAGE_ORIGIN = `https://${REPO_HOST_PATH}`;
+    const FILE_SUFFIX_ENC = '%E6%AD%A3.webp';
+    const ZERO_PAD2_IDS = new Set([6]);
+    const TOTAL_STYLES = 176;
+    const BATCH_SIZE = 24;
+    const STORAGE_KEY_SELECTION = 'wuhuo_perfume_selection_176_v1';
 
-      // Out-of-stock product IDs to hide, e.g. [5, 14, 102]
-      const HIDDEN_PRODUCT_IDS = [89];
-      const HIDDEN_SET = new Set(
-        HIDDEN_PRODUCT_IDS
-          .map(v => parseInt(String(v).replace(/[^\d]/g, ''), 10))
-          .filter(n => !isNaN(n) && n >= 1 && n <= TOTAL_STYLES)
-      );
+    const HIDDEN_PRODUCT_IDS = [89];
+    const HIDDEN_SET = new Set(
+      HIDDEN_PRODUCT_IDS
+        .map(v => parseInt(String(v).replace(/[^\d]/g, ''), 10))
+        .filter(n => !isNaN(n) && n >= 1 && n <= TOTAL_STYLES)
+    );
 
-      // Clear any stale source mode cache from earlier versions
-      try {
-        localStorage.removeItem('wuhuo_perfume_img_mode_v2');
-      } catch (e) {}
+    try { localStorage.removeItem('wuhuo_perfume_img_mode_v2'); } catch (e) {}
 
-      let currentFilteredList = [];
-      let renderedCount = 0;
+    let currentFilteredList = [];
+    let renderedCount = 0;
 
-      const EXACT_BRANDS_1_TO_176 = [
-        "Dior", "Tom Ford", "Chanel", "Creed", "Maison Francis Kurkdjian",
-        "Valentino", "Yves Saint Laurent", "Yves Saint Laurent", "Versace", "Carolina Herrera",
-        "Yves Saint Laurent", "Valentino", "Louis Vuitton", "Paco Rabanne", "Xerjoff",
-        "Jean Paul Gaultier", "Dior", "Louis Vuitton", "Armani", "Parfums de Marly",
-        "Carolina Herrera", "Dior", "Chanel", "Gucci", "Maison Francis Kurkdjian",
-        "Valentino", "Armani", "Initio", "Creed", "Yves Saint Laurent",
-        "Armani", "Kilian", "Parfums de Marly", "Parfums de Marly", "Prada",
-        "Creed", "Louis Vuitton", "Louis Vuitton", "Tom Ford", "Tom Ford",
-        "Carolina Herrera", "Carolina Herrera", "Valentino", "Initio", "Versace",
-        "Maison Francis Kurkdjian", "Yves Saint Laurent", "Versace", "Gucci", "Chanel",
-        "Creed", "Dior", "Jean Paul Gaultier", "Jean Paul Gaultier", "Jean Paul Gaultier",
-        "Jean Paul Gaultier", "Valentino", "Valentino", "Valentino", "Valentino",
-        "Paco Rabanne", "Armaf", "Armaf", "Armaf", "Lancome",
-        "Chanel", "Armani", "Armani", "Byredo", "Tom Ford",
-        "Tom Ford", "Tom Ford", "Tom Ford", "Tom Ford", "Maison Francis Kurkdjian",
-        "Maison Francis Kurkdjian", "Creed", "Carolina Herrera", "Gucci", "Gucci",
-        "Burberry", "Burberry", "Dior", "Dior", "Azzaro",
-        "Viktor & Rolf", "Dolce & Gabbana", "Prada", "Prada", "Valentino",
-        "Valentino", "Valentino", "Valentino", "Valentino", "Valentino",
-        "Chanel", "Chanel", "Chanel", "Chanel", "Chanel",
-        "Azzaro", "Yves Saint Laurent", "Yves Saint Laurent", "Yves Saint Laurent", "Yves Saint Laurent",
-        "Louis Vuitton", "Paco Rabanne", "Paco Rabanne", "Paco Rabanne", "Jean Paul Gaultier",
-        "Jean Paul Gaultier", "Jean Paul Gaultier", "Burberry", "Dior", "Le Labo",
-        "Burberry", "Burberry", "Dolce & Gabbana", "Dolce & Gabbana", "Dolce & Gabbana",
-        "Kayali", "Kayali", "Versace", "Versace", "Lancome",
-        "Ralph Lauren", "Ralph Lauren", "Hermes", "Hugo Boss", "Paco Rabanne",
-        "Creed", "Victoria's Secret", "Viktor & Rolf", "Givenchy", "Gucci",
-        "Jo Malone", "Dior", "Carolina Herrera", "Initio", "Bond No. 9",
-        "Initio", "Chanel", "Chanel", "Armani", "Jean Paul Gaultier",
-        "Initio", "Tom Ford", "Tom Ford", "Gucci", "Creed",
-        "Dior", "Louis Vuitton", "Creed", "Maison Francis Kurkdjian", "Chanel",
-        "Maison Francis Kurkdjian", "Jimmy Choo", "Jimmy Choo", "Kayali", "Kayali",
-        "Kayali", "Kayali", "Kayali", "Kayali", "Valentino",
-        "Valentino", "Bond No. 9", "Bond No. 9", "Bond No. 9", "Marc Jacobs",
-        "Marc Jacobs", "Yves Saint Laurent", "Louis Vuitton", "Carolina Herrera", "Gucci",
-        "Gucci"
+    const EXACT_BRANDS_1_TO_176 = `Dior~Tom Ford~Chanel~Creed~Maison Francis Kurkdjian~Valentino~Yves Saint Laurent~Yves Saint Laurent~Versace~Carolina Herrera~Yves Saint Laurent~Valentino~Louis Vuitton~Paco Rabanne~Xerjoff~Jean Paul Gaultier~Dior~Louis Vuitton~Armani~Parfums de Marly~Carolina Herrera~Dior~Chanel~Gucci~Maison Francis Kurkdjian~Valentino~Armani~Initio~Creed~Yves Saint Laurent~Armani~Kilian~Parfums de Marly~Parfums de Marly~Prada~Creed~Louis Vuitton~Louis Vuitton~Tom Ford~Tom Ford~Carolina Herrera~Carolina Herrera~Valentino~Initio~Versace~Maison Francis Kurkdjian~Yves Saint Laurent~Versace~Gucci~Chanel~Creed~Dior~Jean Paul Gaultier~Jean Paul Gaultier~Jean Paul Gaultier~Jean Paul Gaultier~Valentino~Valentino~Valentino~Valentino~Paco Rabanne~Armaf~Armaf~Armaf~Lancome~Chanel~Armani~Armani~Byredo~Tom Ford~Tom Ford~Tom Ford~Tom Ford~Tom Ford~Maison Francis Kurkdjian~Maison Francis Kurkdjian~Creed~Carolina Herrera~Gucci~Gucci~Burberry~Burberry~Dior~Dior~Azzaro~Viktor & Rolf~Dolce & Gabbana~Prada~Prada~Valentino~Valentino~Valentino~Valentino~Valentino~Valentino~Chanel~Chanel~Chanel~Chanel~Chanel~Azzaro~Yves Saint Laurent~Yves Saint Laurent~Yves Saint Laurent~Yves Saint Laurent~Louis Vuitton~Paco Rabanne~Paco Rabanne~Paco Rabanne~Jean Paul Gaultier~Jean Paul Gaultier~Jean Paul Gaultier~Burberry~Dior~Le Labo~Burberry~Burberry~Dolce & Gabbana~Dolce & Gabbana~Dolce & Gabbana~Kayali~Kayali~Versace~Versace~Lancome~Ralph Lauren~Ralph Lauren~Hermes~Hugo Boss~Paco Rabanne~Creed~Victoria's Secret~Viktor & Rolf~Givenchy~Gucci~Jo Malone~Dior~Carolina Herrera~Initio~Bond No. 9~Initio~Chanel~Chanel~Armani~Jean Paul Gaultier~Initio~Tom Ford~Tom Ford~Gucci~Creed~Dior~Louis Vuitton~Creed~Maison Francis Kurkdjian~Chanel~Maison Francis Kurkdjian~Jimmy Choo~Jimmy Choo~Kayali~Kayali~Kayali~Kayali~Kayali~Kayali~Valentino~Valentino~Bond No. 9~Bond No. 9~Bond No. 9~Marc Jacobs~Marc Jacobs~Yves Saint Laurent~Louis Vuitton~Carolina Herrera~Gucci~Gucci`.split('~');
+
+    const EXACT_NAMES_1_TO_176 = `Dior Sauvage
+Tom Ford Tobacco Vanille
+Chanel Bleu
+Creed Aventus (Black Napoleon)
+MFK Baccarat Rouge 540 EDP
+Valentino Uomo Born In Roma Intense
+YSL Libre
+YSL Black opium
+Versace Eros
+Carolina Herrera Fearless Queen
+YSL Y EDP
+Valentino Uomo Born in Roma
+LV Imagination
+Paco Rabanne 1 Million
+Xerjoff Erba Pura
+Jean Paul Gaultier Le Male Elixir
+Dior Sauvage Elixir
+LV Pacific Chill
+Armani Stronger With You Absolutely
+Parfums de Marly Layton
+Carolina Herrera Untamed Queen
+Dior Miss Dior
+Chanel Coco Mademoiselle
+GUCCI Bloom
+MFK Baccarat Rouge 540
+Valentino Donna Born in Roma
+Armani acqua di gio
+Initio Oud for Greatness
+Creed Silver Mountain Water
+YSL MYSLF
+Armani Code Parfum
+Kilian Angels' Share
+Parfums de Marly Althair
+Parfums de Marly Delina
+Prada Paradoxe
+Creed Millesime Imperial
+LV Afternoon swim
+LV City of stars
+Tom Ford Lost Cherry
+Tom Ford Fucking Fabulous
+Carolina Herrera Bad Boy Elixir
+Carolina Herrera 212 Men
+Valentino Donna
+Initio Psychedelic Love
+Versace Bright Crystal
+MFK Oud Silk Mood
+YSL Mon Paris
+Versace Eros Flame
+GUCCI Flora Gorgeous Jasmine
+Chanel Chance Eau Splendide
+Creed Absolu Aventus
+Dior j'adore
+JPG Le Male Le Parfum
+JPG Scandal
+Jean Paul Gaultier Gaultier²
+JPG Le Beau
+Valentino Donna Born in Roma Green Stravaganza
+Valentino Donna Born In Roma Pink PP
+Valentino Uomo Born In Roma The Gold
+Valentino Uomo Born in Roma Green Stravaganza
+Paco Rabanne Invictus
+Armaf Club de Nuit Intense
+Armaf Club de Nuit Untold
+Armaf Club De Nuit Woman Extrait
+Lancome La Vie Est Belle
+Chanel N°5 EDP
+Armani Stronger With You Intensely
+Armani My Way
+Byredo Rose Of No Man's Land
+Tom Ford Ombre Leather
+Tom Ford Bitter Peach
+Tom Ford Rose Prick
+Tom Ford Oud Wood
+Tom Ford Black Orchid
+MFK Grand Soir
+MFK Baccarat Rouge 540
+Creed Virgin Island Water
+Carolina Herrera Good Girl Blush
+GUCCI Guilty Pour Homme
+GUCCI Guilty
+Burberry Her Elixir de Parfum
+Burberry Her
+Dior Homme Parfum
+Dior Fahrenheit
+Azzaro The Most Wanted
+Viktor & Rolf Spicebomb Extreme
+DG Devotion
+Prada Luna Rossa Ocean
+Prada Luna Rossa
+Valentino Donna Born In Roma The Gold
+Valentino Donna Born In Roma Coral Fantasy
+Valentino Uomo Born in Roma Extradose
+Valentino Uomo Born In Roma Rockstud Noir
+Valentino Uomo Born In Roma Coral Fantasy
+Valentino Donna Born In Roma Intense
+Chanel Coco Noir
+Chanel Chance Eau Fraiche
+Chanel N°5 L'Eau
+Chanel N°5 EDP Red Edition
+Chanel Gabrielle
+Azzaro The Most Wanted Parfum
+YSL Y Elixir
+YSL MYSLF L'Absolu
+YSL Babycat
+YSL Black Opium Over Red
+LV eLVes
+Paco Rabanne Phantom
+Paco Rabanne Fame
+Paco Rabanne Invictus Victory Elixir
+Jean Paul Gaultier La Belle Paradise Garden
+Jean Paul Gaultier Gaultier Divine
+Jean Paul Gaultier Le Beau
+Burberry Goddess
+Dior Gris Dior
+Le Labo Santal 33
+Burberry My Burberry Blush
+Burberry Her Eau de Toilette
+DG Light Blue Pour Homme Summer Vibes
+DG Light Blue pour Homme
+DG Light Blue
+Kayali Eden Juicy Apple | 01
+Kayali Yum Boujee Marshmallow
+Versace Eros Energy
+Versace Crystal Noir EDP
+Lancôme La Nuit Trésor Intense
+Ralph Lauren Polo Red EDP
+Ralph Lauren Polo Blue EDP
+Hermes Terre d'Hermes
+Hugo Boss Bottled
+Paco Rabanne Invictus Parfum
+Creed Love in White
+Victoria's Secret Bombshell
+Viktor & Rolf Spicebomb Night Vision Eau de Parfum
+Givenchy Gentleman Eau de Toilette Intense
+Gucci Flora Gorgeous Gardenia
+Jo Malone English Pear & Freesia
+Dior Hypnotic Poison
+Carolina Herrera Bad Boy Cobalt Elixir
+Initio Side Effect
+Bond No. 9 Greenwich Village
+Initio Absolute Aphrodisiac
+Chanel Bleu de Chanel Parfum
+Chanel Chance Eau de Toilette
+Armani Sì Passione
+Jean Paul Gaultier Ultra Male
+Initio Musk Therapy
+Tom Ford Neroli Portofino Parfum
+Tom Ford Vanilla Sex
+GUCCI Flora Gorgeous Gardenia
+Creed Himalaya
+Dior Mini Gift Box
+LV Mini Gift Box
+Creed Mini Gift Box
+MFK Mini Gift Box
+Chanel Mini Gift Box
+MFK Mini Gift Box
+Jimmy Choo I Want Choo
+Jimmy Choo I Want Choo Le Parfum
+Kayali Vanilla Candy Rock Sugar
+Kayali Eden Plush Pear
+Kayali Vanilla
+Kayali The Wedding Silk Santal
+Kayali Eden Sweet Peach
+Kayali Capri in a Bottle Lemon Sugar
+Valentino Purple Melancholia Uomo
+Valentino Purple Melancholia Donna
+Bond No. 9 Lafayette Street
+Bond No. 9 TriBeCa
+Bond No. 9 Sutton Place
+Marc Jacobs Daisy
+Marc Jacobs Perfect
+Yves Saint Laurent Libre (Female)
+Louis Vuitton Ombre Nomade
+Carolina Herrera La Bomba
+Gucci Guilty Pour Femme
+Gucci Bloom Intense`.split('\n');
+
+    const VERIFIED_VOLUMES = { 1: '100ML', 2: '100ML', 3: '100ML', 4: '100ML', 5: '70ML', 6: '100ML', 7: '90ML', 8: '90ML', 9: '100ML', 14: '100ML', 61: '100ML', 171: '100ML' };
+
+    function getPrimaryFileName(num) {
+      const base = ZERO_PAD2_IDS.has(num) ? String(num).padStart(2, '0') : String(num);
+      return `${base}${FILE_SUFFIX_ENC}`;
+    }
+
+    function getShardedCdnUrls(num, highRes = false) {
+      const fileName = getPrimaryFileName(num);
+      const originUrl = `${REPO_IMAGE_ORIGIN}${fileName}`;
+      const encodedOriginUrl = encodeURIComponent(originUrl);
+      const width = highRes ? 800 : 300;
+      const quality = highRes ? 82 : 72;
+      const shards = [
+        `https://i0.wp.com/${REPO_HOST_PATH}${fileName}?ssl=1&w=${width}&quality=${quality}`,
+        `https://wsrv.nl/?url=${encodedOriginUrl}&w=${width}&q=${quality}&output=webp`,
+        `https://images.weserv.nl/?url=${encodedOriginUrl}&w=${width}&q=${quality}&output=webp`
       ];
+      const offset = num % 3;
+      return [shards[offset], shards[(offset + 1) % 3], shards[(offset + 2) % 3]];
+    }
 
-      const VERIFIED_DETAILS = {
-        1: { note: "Sauvage Eau de Parfum", volume: "100ML" },
-        2: { note: "Tobacco Vanille", volume: "100ML" },
-        3: { note: "Bleu de Chanel", volume: "100ML" },
-        4: { note: "Aventus", volume: "100ML" },
-        5: { note: "Baccarat Rouge 540", volume: "70ML" },
-        6: { note: "Uomo Born In Roma Intense", volume: "100ML" },
-        7: { note: "Libre Eau de Parfum", volume: "90ML" },
-        8: { note: "Black Opium", volume: "90ML" },
-        9: { note: "Eros Parfum", volume: "100ML" },
-        14: { note: "1 Million Eau de Toilette", volume: "100ML" },
-        61: { note: "Invictus Eau de Toilette", volume: "100ML" },
-        171: { note: "Perfect Eau de Parfum", volume: "100ML" }
-      };
-
-      function getPrimaryFileName(num) {
-        const base = ZERO_PAD2_IDS.has(num) ? String(num).padStart(2, '0') : String(num);
-        return `${base}${FILE_SUFFIX_ENC}`;
+    function getCandidateUrls(num, highRes = false) {
+      const primaryFile = getPrimaryFileName(num);
+      const n1 = String(num);
+      const n2 = String(num).padStart(2, '0');
+      const n3 = String(num).padStart(3, '0');
+      const shardedCdns = getShardedCdnUrls(num, highRes);
+      const repoFallbacks = [`./images/${primaryFile}`, `${REPO_IMAGE_ORIGIN}${primaryFile}`];
+      if (num < 10) {
+        const altBase = ZERO_PAD2_IDS.has(num) ? n1 : n2;
+        const altFile = `${altBase}${FILE_SUFFIX_ENC}`;
+        repoFallbacks.push(`./images/${altFile}`, `${REPO_IMAGE_ORIGIN}${altFile}`);
       }
+      repoFallbacks.push(`./images/${n1}.webp`, `./images/${n3}.webp`);
+      return Array.from(new Set([...shardedCdns, ...repoFallbacks]));
+    }
 
-      // Shard across 3 CDN proxies backed exclusively by our own GitHub Pages repository
-      function getShardedCdnUrls(num, highRes = false) {
-        const fileName = getPrimaryFileName(num);
-        const originUrl = `${REPO_IMAGE_ORIGIN}${fileName}`;
-        const encodedOriginUrl = encodeURIComponent(originUrl);
-        const width = highRes ? 800 : 300;
-        const quality = highRes ? 82 : 72;
-        const shards = [
-          `https://i0.wp.com/${REPO_HOST_PATH}${fileName}?ssl=1&w=${width}&quality=${quality}`,
-          `https://wsrv.nl/?url=${encodedOriginUrl}&w=${width}&q=${quality}&output=webp`,
-          `https://images.weserv.nl/?url=${encodedOriginUrl}&w=${width}&q=${quality}&output=webp`
-        ];
-        const offset = num % 3;
-        return [shards[offset], shards[(offset + 1) % 3], shards[(offset + 2) % 3]];
-      }
+    function formatStyleCode(num) {
+      return '#' + (num < 100 ? String(num).padStart(2, '0') : String(num));
+    }
 
-      function getCandidateUrls(num, highRes = false) {
-        const primaryFile = getPrimaryFileName(num);
-        const n1 = String(num);
-        const n2 = String(num).padStart(2, '0');
-        const n3 = String(num).padStart(3, '0');
-        const shardedCdns = getShardedCdnUrls(num, highRes);
+    function createFallbackSvgDataUri(code, brand) {
+      const safeBrand = (brand || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400"><rect width="400" height="400" fill="#F3EDE2"/><rect x="165" y="75" width="70" height="32" rx="6" fill="#B89146"/><rect x="180" y="107" width="40" height="18" fill="#8C6728"/><rect x="115" y="125" width="170" height="205" rx="18" fill="#FAF7F2" stroke="#D2C7B5" stroke-width="4"/><rect x="135" y="165" width="130" height="115" rx="8" fill="#FFFFFF" stroke="#B89146" stroke-width="1.5"/><text x="200" y="212" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="bold" fill="#181512">${code}</text><text x="200" y="242" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="600" fill="#8C6728">${safeBrand}</text></svg>`;
+      return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+    }
 
-        const repoFallbacks = [
-          `./images/${primaryFile}`,
-          `${REPO_IMAGE_ORIGIN}${primaryFile}`
-        ];
+    window.__onCatalogImgLoad = function (imgEl) { imgEl.dataset.ok = '1'; };
 
-        if (num < 10) {
-          const altBase = ZERO_PAD2_IDS.has(num) ? n1 : n2;
-          const altFile = `${altBase}${FILE_SUFFIX_ENC}`;
-          repoFallbacks.push(`./images/${altFile}`, `${REPO_IMAGE_ORIGIN}${altFile}`);
-        }
-
-        repoFallbacks.push(`./images/${n1}.webp`, `./images/${n3}.webp`);
-
-        return Array.from(new Set([...shardedCdns, ...repoFallbacks]));
-      }
-
-      function formatStyleCode(num) {
-        return '#' + (num < 100 ? String(num).padStart(2, '0') : String(num));
-      }
-
-      function createFallbackSvgDataUri(code, brand) {
-        const safeBrand = (brand || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
-          <rect width="400" height="400" fill="#F3EDE2"/>
-          <rect x="165" y="75" width="70" height="32" rx="6" fill="#B89146"/>
-          <rect x="180" y="107" width="40" height="18" fill="#8C6728"/>
-          <rect x="115" y="125" width="170" height="205" rx="18" fill="#FAF7F2" stroke="#D2C7B5" stroke-width="4"/>
-          <rect x="135" y="165" width="130" height="115" rx="8" fill="#FFFFFF" stroke="#B89146" stroke-width="1.5"/>
-          <text x="200" y="212" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="bold" fill="#181512">${code}</text>
-          <text x="200" y="242" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="600" fill="#8C6728">${safeBrand}</text>
-        </svg>`;
-        return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
-      }
-
-      window.__onCatalogImgLoad = function (imgEl) {
+    window.__onCatalogImgErr = function (imgEl, id) {
+      const isHighRes = imgEl.id === 'modal-image';
+      const candidates = getCandidateUrls(id, isHighRes);
+      const nextStage = parseInt(imgEl.dataset.stage || '0', 10) + 1;
+      if (nextStage < candidates.length) {
+        imgEl.dataset.stage = String(nextStage);
+        imgEl.src = candidates[nextStage];
+      } else {
+        imgEl.onerror = null;
         imgEl.dataset.ok = '1';
-      };
+        const item = catalog[id - 1];
+        imgEl.src = createFallbackSvgDataUri(item ? item.code : formatStyleCode(id), item ? item.brand : '');
+      }
+    };
 
-      window.__onCatalogImgErr = function (imgEl, id) {
-        const isHighRes = imgEl.id === 'modal-image';
-        const candidates = getCandidateUrls(id, isHighRes);
-        const nextStage = parseInt(imgEl.dataset.stage || '0', 10) + 1;
-        if (nextStage < candidates.length) {
-          imgEl.dataset.stage = String(nextStage);
-          imgEl.src = candidates[nextStage];
-        } else {
-          imgEl.onerror = null;
-          imgEl.dataset.ok = '1';
-          const item = catalog[id - 1];
-          imgEl.src = createFallbackSvgDataUri(item ? item.code : formatStyleCode(id), item ? item.brand : '');
+    function recoverStalledImages() {
+      const imgs = document.querySelectorAll('img[data-pid]');
+      imgs.forEach(img => {
+        if (img.dataset.ok === '1') return;
+        if (img.id === 'modal-image' && !detailsDialog.open) return;
+        const isBroken = img.complete && img.naturalWidth === 0;
+        const rect = img.getBoundingClientRect();
+        const nearViewport = rect.bottom >= -300 && rect.top <= window.innerHeight + 600;
+        const isStuck = !img.complete && nearViewport;
+        if (isBroken || isStuck) {
+          const id = parseInt(img.dataset.pid, 10);
+          const isHighRes = img.id === 'modal-image';
+          const candidates = getCandidateUrls(id, isHighRes);
+          const curStage = parseInt(img.dataset.stage || '0', 10);
+          const nextStage = isBroken ? (curStage + 1) % candidates.length : curStage;
+          img.dataset.stage = String(nextStage);
+          const baseUrl = candidates[nextStage];
+          if (!baseUrl || baseUrl.startsWith('data:')) return;
+          const sep = baseUrl.includes('?') ? '&' : '?';
+          img.src = baseUrl + sep + '_r=' + Date.now();
         }
-      };
+      });
+    }
 
-      // Recover any aborted or stalled images in/near viewport
-      function recoverStalledImages() {
-        const imgs = document.querySelectorAll('img[data-pid]');
-        imgs.forEach(img => {
-          if (img.dataset.ok === '1') return;
-          if (img.id === 'modal-image' && !detailsDialog.open) return;
+    let catalog = [];
+    let visibleCatalog = [];
+    function buildCatalog() {
+      catalog = EXACT_BRANDS_1_TO_176.slice(0, TOTAL_STYLES).map((defaultBrand, idx) => {
+        const id = idx + 1;
+        const code = formatStyleCode(id);
+        const padded3 = String(id).padStart(3, '0');
+        return {
+          id,
+          code,
+          padded3,
+          brand: defaultBrand,
+          note: EXACT_NAMES_1_TO_176[idx] || '',
+          volume: VERIFIED_VOLUMES[id] || (id % 2 === 0 ? '125ML' : '100ML')
+        };
+      });
+      visibleCatalog = catalog.filter(item => !HIDDEN_SET.has(item.id));
+    }
 
-          const isBroken = img.complete && img.naturalWidth === 0;
-          const rect = img.getBoundingClientRect();
-          const nearViewport = rect.bottom >= -300 && rect.top <= window.innerHeight + 600;
-          const isStuck = !img.complete && nearViewport;
+    let selection = {};
+    try {
+      const savedSelection = localStorage.getItem(STORAGE_KEY_SELECTION);
+      if (savedSelection) {
+        const parsed = JSON.parse(savedSelection);
+        let cleaned = false;
+        Object.keys(parsed).forEach(k => {
+          const id = parseInt(k, 10);
+          const qty = parseInt(parsed[k], 10);
+          if (id >= 1 && id <= TOTAL_STYLES && qty > 0 && !HIDDEN_SET.has(id)) { selection[id] = qty; }
+          else if (HIDDEN_SET.has(id)) { cleaned = true; }
+        });
+        if (cleaned) { localStorage.setItem(STORAGE_KEY_SELECTION, JSON.stringify(selection)); }
+      }
+    } catch (e) { selection = {}; }
 
-          if (isBroken || isStuck) {
-            const id = parseInt(img.dataset.pid, 10);
-            const isHighRes = img.id === 'modal-image';
-            const candidates = getCandidateUrls(id, isHighRes);
-            const curStage = parseInt(img.dataset.stage || '0', 10);
-            const nextStage = isBroken ? (curStage + 1) % candidates.length : curStage;
-            img.dataset.stage = String(nextStage);
-            const baseUrl = candidates[nextStage];
-            if (!baseUrl || baseUrl.startsWith('data:')) return;
-            const sep = baseUrl.includes('?') ? '&' : '?';
-            img.src = baseUrl + sep + '_r=' + Date.now();
-          }
+    let activeBrand = 'All';
+    let searchQuery = '';
+    let showSelectedOnly = false;
+    let currentModalProductId = 1;
+    let toastTimeout = null;
+    let modalHistoryPushed = false;
+    let isClosingFromPopstate = false;
+
+    const perfumesGrid = document.getElementById('perfumes-grid');
+    const loadMoreSentinel = document.getElementById('load-more-sentinel');
+    const brandPillsContainer = document.getElementById('brand-pills-container');
+    const toggleSelectedOnlyBtn = document.getElementById('toggle-selected-only-btn');
+    const stylesCountBadge = document.getElementById('styles-count-badge');
+    const collectionLabel = document.getElementById('collection-label');
+    const resetFiltersInlineBtn = document.getElementById('reset-filters-inline-btn');
+    const emptyFilterState = document.getElementById('empty-filter-state');
+    const searchInput = document.getElementById('catalog-search');
+    const clearSearchBtn = document.getElementById('clear-search-btn');
+    const headerSelectionCount = document.getElementById('header-selection-count');
+
+    const floatingBar = document.getElementById('floating-selection-bar');
+    const floatingStylesBadge = document.getElementById('floating-styles-badge');
+    const floatingSummaryPrimary = document.getElementById('floating-summary-primary');
+    const floatingSummarySecondary = document.getElementById('floating-summary-secondary');
+
+    const detailsDialog = document.getElementById('details-dialog');
+    const modalImage = document.getElementById('modal-image');
+    const modalImageZoomWrap = document.getElementById('modal-image-zoom-wrap');
+    const modalCodeBadge = document.getElementById('modal-code-badge');
+    const modalPositionIndicator = document.getElementById('modal-position-indicator');
+    const modalBrandTitle = document.getElementById('modal-brand-title');
+    const modalCustomSubtitle = document.getElementById('modal-custom-subtitle');
+    const modalQtyInput = document.getElementById('modal-qty-input');
+    const modalPrevBtn = document.getElementById('modal-prev-btn');
+    const modalNextBtn = document.getElementById('modal-next-btn');
+
+    const selectionDialog = document.getElementById('selection-dialog');
+    const drawerTitleCount = document.getElementById('drawer-title-count');
+    const selectionEmptyState = document.getElementById('selection-empty-state');
+    const selectionItemsList = document.getElementById('selection-items-list');
+    const drawerStylesSelected = document.getElementById('drawer-styles-selected');
+    const drawerItemsTotal = document.getElementById('drawer-items-total');
+    const clearAllSelectionBtn = document.getElementById('clear-all-selection-btn');
+    const manualCopyBox = document.getElementById('manual-copy-box');
+    const manualCopyTextarea = document.getElementById('manual-copy-textarea');
+    const drawerCopyBtnLabel = document.getElementById('drawer-copy-btn-label');
+
+    const statusToast = document.getElementById('status-toast');
+    const statusToastText = document.getElementById('status-toast-text');
+
+    function pushModalHistoryIfNeeded() {
+      if (!modalHistoryPushed) {
+        try { history.pushState({ wuhuoModal: true }, ''); modalHistoryPushed = true; } catch (e) {}
+      }
+    }
+
+    function showToast(message) {
+      statusToastText.textContent = message;
+      statusToast.classList.add('visible');
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => { statusToast.classList.remove('visible'); }, 2600);
+    }
+
+    function saveSelection() {
+      try { localStorage.setItem(STORAGE_KEY_SELECTION, JSON.stringify(selection)); } catch (e) {}
+    }
+
+    function getSelectionTotals() {
+      const ids = Object.keys(selection).map(Number).filter(id => selection[id] > 0 && !HIDDEN_SET.has(id)).sort((a, b) => a - b);
+      const totalStyles = ids.length;
+      const totalItems = ids.reduce((acc, id) => acc + selection[id], 0);
+      return { ids, totalStyles, totalItems };
+    }
+
+    function buildQuoteText() {
+      const { ids, totalStyles, totalItems } = getSelectionTotals();
+      if (totalStyles === 0) {
+        return 'Hello WuHuo Factory, I would like to inquire about your perfume catalog (YYX-01 to YYX-176).';
+      }
+      const lines = ['Hello WuHuo Factory, here is my fragrance selection for a quote:', ''];
+      const TARGET_BRANDS = ['Louis Vuitton', 'Jean Paul Gaultier'];
+      const brandTotals = {};
+      ids.forEach(id => {
+        const item = catalog[id - 1];
+        const qty = selection[id];
+        const exportCode = item.code.replace(/^#/, 'YYX-');
+        lines.push(`${exportCode} - ${item.note || item.brand} × ${qty}`);
+        if (TARGET_BRANDS.includes(item.brand)) { brandTotals[item.brand] = (brandTotals[item.brand] || 0) + qty; }
+      });
+      const matchedBrands = TARGET_BRANDS.filter(brand => brandTotals[brand] > 0).sort((a, b) => brandTotals[b] - brandTotals[a]);
+      lines.push('');
+      lines.push(`Total: ${totalStyles} ${totalStyles === 1 ? 'style' : 'styles'}, ${totalItems} ${totalItems === 1 ? 'item' : 'items'}`);
+      if (matchedBrands.length > 0) {
+        matchedBrands.forEach(brand => {
+          const count = brandTotals[brand];
+          lines.push(`- ${brand}: ${count} ${count === 1 ? 'pc' : 'pcs'}`);
         });
       }
+      return lines.join('\n');
+    }
 
-      let catalog = [];
-      let visibleCatalog = [];
-      function buildCatalog() {
-        catalog = EXACT_BRANDS_1_TO_176.slice(0, TOTAL_STYLES).map((defaultBrand, idx) => {
-          const id = idx + 1;
-          const verified = VERIFIED_DETAILS[id] || {};
-          const code = formatStyleCode(id);
-          const padded3 = String(id).padStart(3, '0');
-          return {
-            id,
-            code,
-            padded3,
-            brand: defaultBrand,
-            note: verified.note || '',
-            volume: verified.volume || (id % 2 === 0 ? '125ML' : '100ML')
-          };
-        });
-        visibleCatalog = catalog.filter(item => !HIDDEN_SET.has(item.id));
+    function fallbackExecCommandCopy(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'fixed';
+      textarea.style.top = '0';
+      textarea.style.left = '0';
+      textarea.style.width = '2em';
+      textarea.style.height = '2em';
+      textarea.style.opacity = '0.01';
+      textarea.style.fontSize = '16px';
+      const activeContainer = selectionDialog.open ? selectionDialog : (detailsDialog.open ? detailsDialog : document.body);
+      activeContainer.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      try { textarea.setSelectionRange(0, text.length); } catch (e) {}
+      let success = false;
+      try { success = document.execCommand('copy'); } catch (err) { success = false; }
+      activeContainer.removeChild(textarea);
+      return success;
+    }
+
+    function showManualCopyFallback(text) {
+      if (!selectionDialog.open) { pushModalHistoryIfNeeded(); selectionDialog.showModal(); }
+      manualCopyTextarea.value = text;
+      manualCopyBox.classList.remove('hidden');
+      setTimeout(() => {
+        manualCopyTextarea.focus();
+        manualCopyTextarea.select();
+        try { manualCopyTextarea.setSelectionRange(0, text.length); } catch (e) {}
+      }, 60);
+    }
+
+    async function copySelectionToClipboard() {
+      const { totalStyles } = getSelectionTotals();
+      if (totalStyles === 0) { showToast('Add at least one fragrance to copy your selection'); return; }
+      const text = buildQuoteText();
+      let copied = fallbackExecCommandCopy(text);
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        try { await navigator.clipboard.writeText(text); copied = true; } catch (err) {}
       }
-
-      let selection = {};
-      try {
-        const savedSelection = localStorage.getItem(STORAGE_KEY_SELECTION);
-        if (savedSelection) {
-          const parsed = JSON.parse(savedSelection);
-          let cleaned = false;
-          Object.keys(parsed).forEach(k => {
-            const id = parseInt(k, 10);
-            const qty = parseInt(parsed[k], 10);
-            if (id >= 1 && id <= TOTAL_STYLES && qty > 0 && !HIDDEN_SET.has(id)) {
-              selection[id] = qty;
-            } else if (HIDDEN_SET.has(id)) {
-              cleaned = true;
-            }
-          });
-          if (cleaned) {
-            localStorage.setItem(STORAGE_KEY_SELECTION, JSON.stringify(selection));
-          }
+      if (copied) {
+        showToast(`Copied ${totalStyles} ${totalStyles === 1 ? 'style' : 'styles'} to clipboard!`);
+        if (drawerCopyBtnLabel) {
+          drawerCopyBtnLabel.textContent = '✓ Copied to Clipboard!';
+          setTimeout(() => { drawerCopyBtnLabel.textContent = 'Copy Selection'; }, 2200);
         }
-      } catch (e) {
-        selection = {};
+      } else {
+        showManualCopyFallback(text);
+        showToast('Long-press the text box below to copy');
       }
+    }
 
-      let activeBrand = 'All';
-      let searchQuery = '';
-      let showSelectedOnly = false;
-      let currentModalProductId = 1;
-      let toastTimeout = null;
-      let modalHistoryPushed = false;
-      let isClosingFromPopstate = false;
+    document.getElementById('close-manual-copy-btn').addEventListener('click', () => { manualCopyBox.classList.add('hidden'); });
 
-      // DOM References
-      const perfumesGrid = document.getElementById('perfumes-grid');
-      const loadMoreSentinel = document.getElementById('load-more-sentinel');
-      const brandPillsContainer = document.getElementById('brand-pills-container');
-      const toggleSelectedOnlyBtn = document.getElementById('toggle-selected-only-btn');
-      const stylesCountBadge = document.getElementById('styles-count-badge');
-      const collectionLabel = document.getElementById('collection-label');
-      const resetFiltersInlineBtn = document.getElementById('reset-filters-inline-btn');
-      const emptyFilterState = document.getElementById('empty-filter-state');
-      const searchInput = document.getElementById('catalog-search');
-      const clearSearchBtn = document.getElementById('clear-search-btn');
-      const headerSelectionCount = document.getElementById('header-selection-count');
+    function getBrandCounts() {
+      const counts = {};
+      visibleCatalog.forEach(item => { counts[item.brand] = (counts[item.brand] || 0) + 1; });
+      const sortedBrands = Object.keys(counts).sort((a, b) => a.localeCompare(b, 'en', { sensitivity: 'base' }));
+      return { counts, sortedBrands };
+    }
 
-      const floatingBar = document.getElementById('floating-selection-bar');
-      const floatingStylesBadge = document.getElementById('floating-styles-badge');
-      const floatingSummaryPrimary = document.getElementById('floating-summary-primary');
-      const floatingSummarySecondary = document.getElementById('floating-summary-secondary');
+    function renderBrandPills() {
+      const { counts, sortedBrands } = getBrandCounts();
+      if (activeBrand !== 'All' && !counts[activeBrand]) { activeBrand = 'All'; }
+      let html = `<button type="button" data-brand="All" class="brand-pill ${activeBrand === 'All' ? 'active' : ''}"><span>All</span><span class="pill-count">${visibleCatalog.length}</span></button>`;
+      sortedBrands.forEach(brand => {
+        const isActive = activeBrand === brand;
+        const safeBrand = brand.replace(/"/g, '&quot;');
+        html += `<button type="button" data-brand="${safeBrand}" class="brand-pill ${isActive ? 'active' : ''}"><span>${brand}</span><span class="pill-count">${counts[brand]}</span></button>`;
+      });
+      brandPillsContainer.innerHTML = html;
+      const activeBtn = brandPillsContainer.querySelector('.brand-pill.active');
+      if (activeBtn && window.innerWidth < 640) { activeBtn.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'center' }); }
+    }
 
-      const detailsDialog = document.getElementById('details-dialog');
-      const modalImage = document.getElementById('modal-image');
-      const modalImageZoomWrap = document.getElementById('modal-image-zoom-wrap');
-      const modalCodeBadge = document.getElementById('modal-code-badge');
-      const modalPositionIndicator = document.getElementById('modal-position-indicator');
-      const modalBrandTitle = document.getElementById('modal-brand-title');
-      const modalCustomSubtitle = document.getElementById('modal-custom-subtitle');
-      const modalQtyInput = document.getElementById('modal-qty-input');
-      const modalPrevBtn = document.getElementById('modal-prev-btn');
-      const modalNextBtn = document.getElementById('modal-next-btn');
+    function getFilteredCatalog() {
+      const q = searchQuery.trim().toLowerCase();
+      const numericQuery = q.replace(/^#/, '').replace(/^yyx-/, '').replace(/^0+/, '');
+      return visibleCatalog.filter(item => {
+        if (showSelectedOnly && !(selection[item.id] > 0)) return false;
+        if (activeBrand !== 'All' && item.brand !== activeBrand) return false;
+        if (!q) return true;
+        const codeLower = item.code.toLowerCase();
+        const brandLower = item.brand.toLowerCase();
+        const noteLower = (item.note || '').toLowerCase();
+        const idStr = String(item.id);
+        const padded3 = item.padded3;
+        return codeLower.includes(q) || brandLower.includes(q) || noteLower.includes(q) || padded3.includes(q) || (numericQuery && idStr === numericQuery);
+      });
+    }
 
-      const selectionDialog = document.getElementById('selection-dialog');
-      const drawerTitleCount = document.getElementById('drawer-title-count');
-      const selectionEmptyState = document.getElementById('selection-empty-state');
-      const selectionItemsList = document.getElementById('selection-items-list');
-      const drawerStylesSelected = document.getElementById('drawer-styles-selected');
-      const drawerItemsTotal = document.getElementById('drawer-items-total');
-      const clearAllSelectionBtn = document.getElementById('clear-all-selection-btn');
-      const manualCopyBox = document.getElementById('manual-copy-box');
-      const manualCopyTextarea = document.getElementById('manual-copy-textarea');
-      const drawerCopyBtnLabel = document.getElementById('drawer-copy-btn-label');
+    function getCardActionMarkup(id, code, qty) {
+      if (qty === 0) { return `<button type="button" data-action="add" data-id="${id}" class="btn-add-card"><span>Add to Selection</span></button>`; }
+      return `<div class="card-stepper"><button type="button" data-action="dec" data-id="${id}" aria-label="Decrease quantity for ${code}" class="stepper-btn-dec">−</button><input type="number" min="0" max="9999" value="${qty}" data-action="input" data-id="${id}" aria-label="Quantity for ${code}" class="stepper-input" /><button type="button" data-action="inc" data-id="${id}" aria-label="Increase quantity for ${code}" class="stepper-btn-inc">+</button></div>`;
+    }
 
-      const statusToast = document.getElementById('status-toast');
-      const statusToastText = document.getElementById('status-toast-text');
+    function buildCardHtml(item, globalIndex) {
+      const qty = selection[item.id] || 0;
+      const isSelected = qty > 0;
+      const primaryUrl = getCandidateUrls(item.id, false)[0];
+      const isEager = globalIndex < 8;
+      return `<article class="perfume-card ${isSelected ? 'is-selected' : ''}" data-product-id="${item.id}"><div class="card-image-wrap" data-open-details="${item.id}"><span class="style-code-badge">${item.code}</span><span class="ml-badge">${item.volume}</span><span class="selected-qty-pill ${isSelected ? '' : 'hidden'}" data-card-pill="${item.id}">✓ ${qty}</span><img src="${primaryUrl}" alt="${item.code} ${item.brand}" data-pid="${item.id}" data-stage="0" referrerpolicy="no-referrer" decoding="async" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? 'fetchpriority="high"' : ''} onload="window.__onCatalogImgLoad(this)" onerror="window.__onCatalogImgErr(this, ${item.id})" /></div><div class="card-body"><div class="card-info" data-open-details="${item.id}"><div class="card-brand">${item.brand.toUpperCase()}</div><div class="card-title">${item.note || `${item.brand} ${item.code}`}</div></div><div data-card-action-wrap="${item.id}">${getCardActionMarkup(item.id, item.code, qty)}</div></div></article>`;
+    }
 
-      function pushModalHistoryIfNeeded() {
-        if (!modalHistoryPushed) {
-          try {
-            history.pushState({ wuhuoModal: true }, '');
-            modalHistoryPushed = true;
-          } catch (e) {}
-        }
+    function appendNextBatch() {
+      if (renderedCount >= currentFilteredList.length) return;
+      const nextSlice = currentFilteredList.slice(renderedCount, renderedCount + BATCH_SIZE);
+      const startIdx = renderedCount;
+      renderedCount += nextSlice.length;
+      perfumesGrid.insertAdjacentHTML('beforeend', nextSlice.map((item, i) => buildCardHtml(item, startIdx + i)).join(''));
+    }
+
+    function renderCatalogGrid() {
+      currentFilteredList = getFilteredCatalog();
+      renderedCount = 0;
+      stylesCountBadge.textContent = `${currentFilteredList.length} / ${visibleCatalog.length} styles`;
+      const emptyResetBtn = document.getElementById('empty-reset-btn');
+      if (emptyResetBtn) { emptyResetBtn.textContent = `Show all ${visibleCatalog.length} styles`; }
+      const filterParts = [];
+      if (activeBrand !== 'All') filterParts.push(activeBrand);
+      if (searchQuery.trim()) filterParts.push(`"${searchQuery.trim()}"`);
+      if (showSelectedOnly) filterParts.push('Selected only');
+      if (filterParts.length === 0) {
+        collectionLabel.textContent = 'The complete collection';
+        resetFiltersInlineBtn.classList.add('hidden');
+      } else {
+        collectionLabel.textContent = `${filterParts.join(' · ')} (${currentFilteredList.length} ${currentFilteredList.length === 1 ? 'style' : 'styles'})`;
+        resetFiltersInlineBtn.classList.remove('hidden');
       }
-
-      function showToast(message) {
-        statusToastText.textContent = message;
-        statusToast.classList.add('visible');
-        if (toastTimeout) clearTimeout(toastTimeout);
-        toastTimeout = setTimeout(() => {
-          statusToast.classList.remove('visible');
-        }, 2600);
+      if (currentFilteredList.length === 0) {
+        perfumesGrid.innerHTML = '';
+        emptyFilterState.classList.remove('hidden');
+        return;
       }
+      emptyFilterState.classList.add('hidden');
+      perfumesGrid.innerHTML = '';
+      appendNextBatch();
+    }
 
-      function saveSelection() {
-        try {
-          localStorage.setItem(STORAGE_KEY_SELECTION, JSON.stringify(selection));
-        } catch (e) {}
+    function updateSingleCardDOM(id) {
+      if (showSelectedOnly) { renderCatalogGrid(); return; }
+      const card = perfumesGrid.querySelector(`article[data-product-id="${id}"]`);
+      if (!card) return;
+      const item = catalog[id - 1];
+      const qty = selection[id] || 0;
+      const isSelected = qty > 0;
+      card.classList.toggle('is-selected', isSelected);
+      const pill = card.querySelector(`[data-card-pill="${id}"]`);
+      if (pill) { pill.textContent = `✓ ${qty}`; pill.classList.toggle('hidden', !isSelected); }
+      const actionWrap = card.querySelector(`[data-card-action-wrap="${id}"]`);
+      if (actionWrap) { actionWrap.innerHTML = getCardActionMarkup(id, item.code, qty); }
+    }
+
+    function updateSelectionSummaryUI() {
+      const { ids, totalStyles, totalItems } = getSelectionTotals();
+      headerSelectionCount.textContent = String(totalStyles);
+      if (totalStyles > 0) {
+        toggleSelectedOnlyBtn.classList.remove('hidden');
+        toggleSelectedOnlyBtn.textContent = showSelectedOnly ? `Showing Selected (${totalStyles})` : `Show Selected Only (${totalStyles})`;
+        toggleSelectedOnlyBtn.classList.toggle('is-active', showSelectedOnly);
+      } else {
+        if (showSelectedOnly) { showSelectedOnly = false; renderCatalogGrid(); }
+        toggleSelectedOnlyBtn.classList.add('hidden');
       }
-
-      function getSelectionTotals() {
-        const ids = Object.keys(selection)
-          .map(Number)
-          .filter(id => selection[id] > 0 && !HIDDEN_SET.has(id))
-          .sort((a, b) => a - b);
-        const totalStyles = ids.length;
-        const totalItems = ids.reduce((acc, id) => acc + selection[id], 0);
-        return { ids, totalStyles, totalItems };
+      if (totalStyles > 0) {
+        floatingBar.classList.remove('is-hidden');
+        floatingStylesBadge.textContent = String(totalStyles);
+        floatingSummaryPrimary.textContent = `${totalStyles} ${totalStyles === 1 ? 'style' : 'styles'} selected`;
+        floatingSummarySecondary.textContent = `${totalItems} ${totalItems === 1 ? 'item' : 'items'} total · Ready for quote`;
+      } else {
+        floatingBar.classList.add('is-hidden');
       }
-
-      function buildQuoteText() {
-        const { ids, totalStyles, totalItems } = getSelectionTotals();
-        if (totalStyles === 0) {
-          return 'Hello WuHuo Factory, I would like to inquire about your perfume catalog (YYX-01 to YYX-176).';
-        }
-        const lines = [
-          'Hello WuHuo Factory, here is my fragrance selection for a quote:',
-          ''
-        ];
-        const TARGET_BRANDS = ['Louis Vuitton', 'Jean Paul Gaultier'];
-        const brandTotals = {};
-
-        ids.forEach(id => {
+      drawerTitleCount.textContent = `(${totalStyles})`;
+      drawerStylesSelected.textContent = `${totalStyles} ${totalStyles === 1 ? 'style' : 'styles'} selected`;
+      drawerItemsTotal.textContent = `${totalItems} ${totalItems === 1 ? 'item' : 'items'} total`;
+      clearAllSelectionBtn.classList.toggle('hidden', totalStyles === 0);
+      if (!manualCopyBox.classList.contains('hidden')) { manualCopyTextarea.value = buildQuoteText(); }
+      if (totalStyles === 0) {
+        selectionEmptyState.classList.remove('hidden');
+        selectionItemsList.classList.add('hidden');
+        selectionItemsList.innerHTML = '';
+        manualCopyBox.classList.add('hidden');
+      } else {
+        selectionEmptyState.classList.add('hidden');
+        selectionItemsList.classList.remove('hidden');
+        selectionItemsList.innerHTML = ids.map(id => {
           const item = catalog[id - 1];
           const qty = selection[id];
-          const notePart = item && item.note ? ` (${item.note})` : '';
-          const exportCode = item.code.replace(/^#/, 'YYX-');
-          lines.push(`${exportCode} - ${item.brand}${notePart} × ${qty}`);
-
-          if (TARGET_BRANDS.includes(item.brand)) {
-            brandTotals[item.brand] = (brandTotals[item.brand] || 0) + qty;
-          }
-        });
-
-        const matchedBrands = TARGET_BRANDS
-          .filter(brand => brandTotals[brand] > 0)
-          .sort((a, b) => brandTotals[b] - brandTotals[a]);
-
-        lines.push('');
-        lines.push(`Total: ${totalStyles} ${totalStyles === 1 ? 'style' : 'styles'}, ${totalItems} ${totalItems === 1 ? 'item' : 'items'}`);
-
-        if (matchedBrands.length > 0) {
-          matchedBrands.forEach(brand => {
-            const count = brandTotals[brand];
-            lines.push(`- ${brand}: ${count} ${count === 1 ? 'pc' : 'pcs'}`);
-          });
-        }
-
-        return lines.join('\n');
+          const thumbUrl = getCandidateUrls(item.id, false)[0];
+          return `<div class="drawer-item-row"><div class="drawer-item-left" data-drawer-open-details="${item.id}"><img src="${thumbUrl}" alt="${item.code}" data-stage="0" referrerpolicy="no-referrer" decoding="async" loading="lazy" onerror="window.__onCatalogImgErr(this, ${item.id})" class="drawer-item-thumb" /><div class="drawer-item-meta"><div class="drawer-item-top"><span class="drawer-code-pill">${item.code}</span><span class="drawer-brand-name">${item.brand}</span></div>${item.note ? `<div class="drawer-item-note">${item.note}</div>` : ''}</div></div><div class="drawer-item-controls"><button type="button" data-drawer-action="dec" data-id="${item.id}" class="stepper-btn-dec" style="background:var(--bg-secondary);">−</button><input type="number" min="0" max="9999" value="${qty}" data-drawer-action="input" data-id="${item.id}" aria-label="Quantity for ${item.code}" class="drawer-qty-input" /><button type="button" data-drawer-action="inc" data-id="${item.id}" class="stepper-btn-inc">+</button><button type="button" data-drawer-action="remove" data-id="${item.id}" aria-label="Remove ${item.code}" class="drawer-remove-btn">×</button></div></div>`;
+        }).join('');
       }
+    }
 
-      function fallbackExecCommandCopy(text) {
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        textarea.setAttribute('readonly', '');
-        textarea.style.position = 'fixed';
-        textarea.style.top = '0';
-        textarea.style.left = '0';
-        textarea.style.width = '2em';
-        textarea.style.height = '2em';
-        textarea.style.opacity = '0.01';
-        textarea.style.fontSize = '16px';
+    function setProductQuantity(id, newQty) {
+      const numericId = parseInt(id, 10);
+      if (isNaN(numericId) || numericId < 1 || numericId > TOTAL_STYLES || HIDDEN_SET.has(numericId)) return;
+      const clamped = Math.max(0, Math.min(9999, parseInt(newQty, 10) || 0));
+      if (clamped === 0) { delete selection[numericId]; } else { selection[numericId] = clamped; }
+      saveSelection();
+      updateSingleCardDOM(numericId);
+      updateSelectionSummaryUI();
+      if (detailsDialog.open && currentModalProductId === numericId) { modalQtyInput.value = String(clamped); }
+    }
 
-        const activeContainer = selectionDialog.open
-          ? selectionDialog
-          : (detailsDialog.open ? detailsDialog : document.body);
-
-        activeContainer.appendChild(textarea);
-        textarea.focus();
-        textarea.select();
-        try {
-          textarea.setSelectionRange(0, text.length);
-        } catch (e) {}
-
-        let success = false;
-        try {
-          success = document.execCommand('copy');
-        } catch (err) {
-          success = false;
-        }
-        activeContainer.removeChild(textarea);
-        return success;
+    function getModalNavList() {
+      const list = currentFilteredList.length > 0 ? currentFilteredList : visibleCatalog;
+      const idx = list.findIndex(item => item.id === currentModalProductId);
+      if (idx === -1) {
+        const fallbackIdx = visibleCatalog.findIndex(item => item.id === currentModalProductId);
+        return { list: visibleCatalog, idx: fallbackIdx === -1 ? 0 : fallbackIdx };
       }
+      return { list, idx };
+    }
 
-      function showManualCopyFallback(text) {
-        if (!selectionDialog.open) {
-          pushModalHistoryIfNeeded();
-          selectionDialog.showModal();
-        }
-        manualCopyTextarea.value = text;
-        manualCopyBox.classList.remove('hidden');
-        setTimeout(() => {
-          manualCopyTextarea.focus();
-          manualCopyTextarea.select();
-          try {
-            manualCopyTextarea.setSelectionRange(0, text.length);
-          } catch (e) {}
-        }, 60);
-      }
+    function navigateDetailsModal(delta) {
+      const { list, idx } = getModalNavList();
+      if (list.length <= 1) return;
+      openDetailsModal(list[(idx + delta + list.length) % list.length].id);
+    }
 
-      async function copySelectionToClipboard() {
-        const { totalStyles } = getSelectionTotals();
-        if (totalStyles === 0) {
-          showToast('Add at least one fragrance to copy your selection');
-          return;
-        }
+    let modalLoadToken = 0;
+    const preloadedHighRes = new Set();
 
-        const text = buildQuoteText();
-        let copied = fallbackExecCommandCopy(text);
+    function preloadHighRes(id) {
+      if (!id || preloadedHighRes.has(id) || HIDDEN_SET.has(id)) return;
+      preloadedHighRes.add(id);
+      const img = new Image();
+      img.referrerPolicy = 'no-referrer';
+      img.src = getCandidateUrls(id, true)[0];
+    }
 
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          try {
-            await navigator.clipboard.writeText(text);
-            copied = true;
-          } catch (err) {}
-        }
-
-        if (copied) {
-          showToast(`Copied ${totalStyles} ${totalStyles === 1 ? 'style' : 'styles'} to clipboard!`);
-          if (drawerCopyBtnLabel) {
-            drawerCopyBtnLabel.textContent = '✓ Copied to Clipboard!';
-            setTimeout(() => {
-              drawerCopyBtnLabel.textContent = 'Copy Selection';
-            }, 2200);
-          }
-        } else {
-          showManualCopyFallback(text);
-          showToast('Long-press the text box below to copy');
-        }
-      }
-
-      document.getElementById('close-manual-copy-btn').addEventListener('click', () => {
-        manualCopyBox.classList.add('hidden');
-      });
-
-      function getBrandCounts() {
-        const counts = {};
-        visibleCatalog.forEach(item => {
-          counts[item.brand] = (counts[item.brand] || 0) + 1;
-        });
-        const sortedBrands = Object.keys(counts).sort((a, b) =>
-          a.localeCompare(b, 'en', { sensitivity: 'base' })
-        );
-        return { counts, sortedBrands };
-      }
-
-      function renderBrandPills() {
-        const { counts, sortedBrands } = getBrandCounts();
-        if (activeBrand !== 'All' && !counts[activeBrand]) {
-          activeBrand = 'All';
-        }
-
-        let html = `
-          <button type="button" data-brand="All" class="brand-pill ${activeBrand === 'All' ? 'active' : ''}">
-            <span>All</span>
-            <span class="pill-count">${visibleCatalog.length}</span>
-          </button>
-        `;
-
-        sortedBrands.forEach(brand => {
-          const isActive = activeBrand === brand;
-          const safeBrand = brand.replace(/"/g, '&quot;');
-          html += `
-            <button type="button" data-brand="${safeBrand}" class="brand-pill ${isActive ? 'active' : ''}">
-              <span>${brand}</span>
-              <span class="pill-count">${counts[brand]}</span>
-            </button>
-          `;
-        });
-
-        brandPillsContainer.innerHTML = html;
-
-        const activeBtn = brandPillsContainer.querySelector('.brand-pill.active');
-        if (activeBtn && window.innerWidth < 640) {
-          activeBtn.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'center' });
-        }
-      }
-
-      function getFilteredCatalog() {
-        const q = searchQuery.trim().toLowerCase();
-        const numericQuery = q.replace(/^#/, '').replace(/^yyx-/, '').replace(/^0+/, '');
-
-        return visibleCatalog.filter(item => {
-          if (showSelectedOnly && !(selection[item.id] > 0)) {
-            return false;
-          }
-          if (activeBrand !== 'All' && item.brand !== activeBrand) {
-            return false;
-          }
-          if (!q) return true;
-
-          const codeLower = item.code.toLowerCase();
-          const brandLower = item.brand.toLowerCase();
-          const noteLower = (item.note || '').toLowerCase();
-          const idStr = String(item.id);
-          const padded3 = item.padded3;
-
-          return (
-            codeLower.includes(q) ||
-            brandLower.includes(q) ||
-            noteLower.includes(q) ||
-            padded3.includes(q) ||
-            (numericQuery && idStr === numericQuery)
-          );
-        });
-      }
-
-      function getCardActionMarkup(id, code, qty) {
-        if (qty === 0) {
-          return `
-            <button type="button" data-action="add" data-id="${id}" class="btn-add-card">
-              <span>Add to Selection</span>
-            </button>
-          `;
-        }
-        return `
-          <div class="card-stepper">
-            <button type="button" data-action="dec" data-id="${id}" aria-label="Decrease quantity for ${code}" class="stepper-btn-dec">−</button>
-            <input type="number" min="0" max="9999" value="${qty}" data-action="input" data-id="${id}" aria-label="Quantity for ${code}" class="stepper-input" />
-            <button type="button" data-action="inc" data-id="${id}" aria-label="Increase quantity for ${code}" class="stepper-btn-inc">+</button>
-          </div>
-        `;
-      }
-
-      function buildCardHtml(item, globalIndex) {
-        const qty = selection[item.id] || 0;
-        const isSelected = qty > 0;
-        const primaryUrl = getCandidateUrls(item.id, false)[0];
-        const isEager = globalIndex < 8;
-        return `
-          <article class="perfume-card ${isSelected ? 'is-selected' : ''}" data-product-id="${item.id}">
-            <div class="card-image-wrap" data-open-details="${item.id}">
-              <span class="style-code-badge">${item.code}</span>
-              <span class="ml-badge">${item.volume}</span>
-              <span class="selected-qty-pill ${isSelected ? '' : 'hidden'}" data-card-pill="${item.id}">✓ ${qty}</span>
-              <img
-                src="${primaryUrl}"
-                alt="${item.code} ${item.brand}"
-                data-pid="${item.id}"
-                data-stage="0"
-                referrerpolicy="no-referrer"
-                decoding="async"
-                loading="${isEager ? 'eager' : 'lazy'}"
-                ${isEager ? 'fetchpriority="high"' : ''}
-                onload="window.__onCatalogImgLoad(this)"
-                onerror="window.__onCatalogImgErr(this, ${item.id})"
-              />
-            </div>
-            <div class="card-body">
-              <div class="card-info" data-open-details="${item.id}">
-                <div class="card-brand">${item.brand.toUpperCase()}</div>
-                <div class="card-title">${item.note ? `${item.brand} ${item.note}` : `${item.brand} ${item.code}`}</div>
-              </div>
-              <div data-card-action-wrap="${item.id}">
-                ${getCardActionMarkup(item.id, item.code, qty)}
-              </div>
-            </div>
-          </article>
-        `;
-      }
-
-      function appendNextBatch() {
-        if (renderedCount >= currentFilteredList.length) return;
-        const nextSlice = currentFilteredList.slice(renderedCount, renderedCount + BATCH_SIZE);
-        const startIdx = renderedCount;
-        renderedCount += nextSlice.length;
-        const html = nextSlice.map((item, i) => buildCardHtml(item, startIdx + i)).join('');
-        perfumesGrid.insertAdjacentHTML('beforeend', html);
-      }
-
-      function renderCatalogGrid() {
-        currentFilteredList = getFilteredCatalog();
-        renderedCount = 0;
-        stylesCountBadge.textContent = `${currentFilteredList.length} / ${visibleCatalog.length} styles`;
-
-        const emptyResetBtn = document.getElementById('empty-reset-btn');
-        if (emptyResetBtn) {
-          emptyResetBtn.textContent = `Show all ${visibleCatalog.length} styles`;
-        }
-
-        const filterParts = [];
-        if (activeBrand !== 'All') filterParts.push(activeBrand);
-        if (searchQuery.trim()) filterParts.push(`"${searchQuery.trim()}"`);
-        if (showSelectedOnly) filterParts.push('Selected only');
-
-        if (filterParts.length === 0) {
-          collectionLabel.textContent = 'The complete collection';
-          resetFiltersInlineBtn.classList.add('hidden');
-        } else {
-          collectionLabel.textContent = `${filterParts.join(' · ')} (${currentFilteredList.length} ${currentFilteredList.length === 1 ? 'style' : 'styles'})`;
-          resetFiltersInlineBtn.classList.remove('hidden');
-        }
-
-        if (currentFilteredList.length === 0) {
-          perfumesGrid.innerHTML = '';
-          emptyFilterState.classList.remove('hidden');
-          return;
-        }
-        emptyFilterState.classList.add('hidden');
-        perfumesGrid.innerHTML = '';
-        appendNextBatch();
-      }
-
-      function updateSingleCardDOM(id) {
-        if (showSelectedOnly) {
-          renderCatalogGrid();
-          return;
-        }
-        const card = perfumesGrid.querySelector(`article[data-product-id="${id}"]`);
-        if (!card) return;
-        const item = catalog[id - 1];
-        const qty = selection[id] || 0;
-        const isSelected = qty > 0;
-
-        card.classList.toggle('is-selected', isSelected);
-
-        const pill = card.querySelector(`[data-card-pill="${id}"]`);
-        if (pill) {
-          pill.textContent = `✓ ${qty}`;
-          pill.classList.toggle('hidden', !isSelected);
-        }
-
-        const actionWrap = card.querySelector(`[data-card-action-wrap="${id}"]`);
-        if (actionWrap) {
-          actionWrap.innerHTML = getCardActionMarkup(id, item.code, qty);
-        }
-      }
-
-      function updateSelectionSummaryUI() {
-        const { ids, totalStyles, totalItems } = getSelectionTotals();
-
-        headerSelectionCount.textContent = String(totalStyles);
-        if (totalStyles > 0) {
-          toggleSelectedOnlyBtn.classList.remove('hidden');
-          toggleSelectedOnlyBtn.textContent = showSelectedOnly
-            ? `Showing Selected (${totalStyles})`
-            : `Show Selected Only (${totalStyles})`;
-          toggleSelectedOnlyBtn.classList.toggle('is-active', showSelectedOnly);
-        } else {
-          if (showSelectedOnly) {
-            showSelectedOnly = false;
-            renderCatalogGrid();
-          }
-          toggleSelectedOnlyBtn.classList.add('hidden');
-        }
-
-        if (totalStyles > 0) {
-          floatingBar.classList.remove('is-hidden');
-          floatingStylesBadge.textContent = String(totalStyles);
-          floatingSummaryPrimary.textContent = `${totalStyles} ${totalStyles === 1 ? 'style' : 'styles'} selected`;
-          floatingSummarySecondary.textContent = `${totalItems} ${totalItems === 1 ? 'item' : 'items'} total · Ready for quote`;
-        } else {
-          floatingBar.classList.add('is-hidden');
-        }
-
-        drawerTitleCount.textContent = `(${totalStyles})`;
-        drawerStylesSelected.textContent = `${totalStyles} ${totalStyles === 1 ? 'style' : 'styles'} selected`;
-        drawerItemsTotal.textContent = `${totalItems} ${totalItems === 1 ? 'item' : 'items'} total`;
-        clearAllSelectionBtn.classList.toggle('hidden', totalStyles === 0);
-
-        if (!manualCopyBox.classList.contains('hidden')) {
-          manualCopyTextarea.value = buildQuoteText();
-        }
-
-        if (totalStyles === 0) {
-          selectionEmptyState.classList.remove('hidden');
-          selectionItemsList.classList.add('hidden');
-          selectionItemsList.innerHTML = '';
-          manualCopyBox.classList.add('hidden');
-        } else {
-          selectionEmptyState.classList.add('hidden');
-          selectionItemsList.classList.remove('hidden');
-          selectionItemsList.innerHTML = ids.map(id => {
-            const item = catalog[id - 1];
-            const qty = selection[id];
-            const thumbUrl = getCandidateUrls(item.id, false)[0];
-            return `
-              <div class="drawer-item-row">
-                <div class="drawer-item-left" data-drawer-open-details="${item.id}">
-                  <img
-                    src="${thumbUrl}"
-                    alt="${item.code}"
-                    data-stage="0"
-                    referrerpolicy="no-referrer"
-                    decoding="async"
-                    loading="lazy"
-                    onerror="window.__onCatalogImgErr(this, ${item.id})"
-                    class="drawer-item-thumb"
-                  />
-                  <div class="drawer-item-meta">
-                    <div class="drawer-item-top">
-                      <span class="drawer-code-pill">${item.code}</span>
-                      <span class="drawer-brand-name">${item.brand}</span>
-                    </div>
-                    ${item.note ? `<div class="drawer-item-note">${item.note}</div>` : ''}
-                  </div>
-                </div>
-
-                <div class="drawer-item-controls">
-                  <button type="button" data-drawer-action="dec" data-id="${item.id}" class="stepper-btn-dec" style="background:var(--bg-secondary);">−</button>
-                  <input type="number" min="0" max="9999" value="${qty}" data-drawer-action="input" data-id="${item.id}" aria-label="Quantity for ${item.code}" class="drawer-qty-input" />
-                  <button type="button" data-drawer-action="inc" data-id="${item.id}" class="stepper-btn-inc">+</button>
-                  <button type="button" data-drawer-action="remove" data-id="${item.id}" aria-label="Remove ${item.code}" class="drawer-remove-btn">×</button>
-                </div>
-              </div>
-            `;
-          }).join('');
-        }
-      }
-
-      function setProductQuantity(id, newQty) {
-        const numericId = parseInt(id, 10);
-        if (isNaN(numericId) || numericId < 1 || numericId > TOTAL_STYLES || HIDDEN_SET.has(numericId)) return;
-        const clamped = Math.max(0, Math.min(9999, parseInt(newQty, 10) || 0));
-        if (clamped === 0) {
-          delete selection[numericId];
-        } else {
-          selection[numericId] = clamped;
-        }
-        saveSelection();
-        updateSingleCardDOM(numericId);
-        updateSelectionSummaryUI();
-        if (detailsDialog.open && currentModalProductId === numericId) {
-          modalQtyInput.value = String(clamped);
-        }
-      }
-
-      function getModalNavList() {
-        const list = currentFilteredList.length > 0 ? currentFilteredList : visibleCatalog;
-        const idx = list.findIndex(item => item.id === currentModalProductId);
-        if (idx === -1) {
-          const fallbackIdx = visibleCatalog.findIndex(item => item.id === currentModalProductId);
-          return { list: visibleCatalog, idx: fallbackIdx === -1 ? 0 : fallbackIdx };
-        }
-        return { list, idx };
-      }
-
-      function navigateDetailsModal(delta) {
-        const { list, idx } = getModalNavList();
-        if (list.length <= 1) return;
-        const targetIdx = (idx + delta + list.length) % list.length;
-        openDetailsModal(list[targetIdx].id);
-      }
-
-      let modalLoadToken = 0;
-      const preloadedHighRes = new Set();
-
-      function preloadHighRes(id) {
-        if (!id || preloadedHighRes.has(id) || HIDDEN_SET.has(id)) return;
-        preloadedHighRes.add(id);
-        const img = new Image();
-        img.referrerPolicy = 'no-referrer';
-        img.src = getCandidateUrls(id, true)[0];
-      }
-
-      function openDetailsModal(id) {
-        const numericId = parseInt(id, 10);
-        if (isNaN(numericId) || numericId < 1 || numericId > TOTAL_STYLES || HIDDEN_SET.has(numericId)) return;
-        currentModalProductId = numericId;
-        const item = catalog[numericId - 1];
-        const qty = selection[numericId] || 0;
-        const { list, idx } = getModalNavList();
-
-        modalImageZoomWrap.classList.remove('zoomed');
-        modalCodeBadge.textContent = item.code;
-        if (list.length < visibleCatalog.length || HIDDEN_SET.size > 0) {
-          modalPositionIndicator.textContent = `Style ${item.code} (${idx + 1} of ${list.length})`;
-        } else {
-          modalPositionIndicator.textContent = `Style ${item.code} of ${visibleCatalog.length}`;
-        }
-
-        const showNavBtns = list.length > 1;
-        modalPrevBtn.classList.toggle('hidden', !showNavBtns);
-        modalNextBtn.classList.toggle('hidden', !showNavBtns);
-
-        modalBrandTitle.textContent = item.brand;
-        modalCustomSubtitle.textContent = item.note
-          ? `${item.note} (${item.volume}) · USA Warehouse Fast Delivery`
-          : `Catalog Style ${item.code} (${item.volume}) · USA Warehouse Fast Delivery`;
-
-        const token = ++modalLoadToken;
-        const candidates = getCandidateUrls(numericId, true);
-        const cardImg = perfumesGrid.querySelector(`img[data-pid="${numericId}"]`);
-        const rawCardSrc = (cardImg && cardImg.complete && cardImg.naturalWidth > 0) ? (cardImg.currentSrc || cardImg.src) : '';
-        const cachedThumb = rawCardSrc && !rawCardSrc.startsWith('data:') ? rawCardSrc : '';
-
-        modalImage.dataset.pid = String(numericId);
-        modalImage.dataset.stage = '0';
-        modalImage.alt = `${item.code} ${item.brand}`;
-        modalQtyInput.value = String(qty);
-
-        if (cachedThumb) {
-          modalImage.onload = null;
-          modalImage.onerror = null;
-          modalImage.dataset.ok = '1';
-          modalImage.src = cachedThumb;
-
-          if (cachedThumb.includes('w=300')) {
-            let hiStage = 0;
-            const hiImg = new Image();
-            hiImg.referrerPolicy = 'no-referrer';
-            hiImg.onload = function () {
-              if (token !== modalLoadToken) return;
-              modalImage.src = hiImg.src;
-              preloadedHighRes.add(numericId);
-            };
-            hiImg.onerror = function () {
-              if (token !== modalLoadToken) return;
-              hiStage += 1;
-              if (hiStage < candidates.length) {
-                hiImg.src = candidates[hiStage];
-              }
-            };
-            hiImg.src = candidates[0];
-          }
-        } else {
-          modalImage.removeAttribute('src');
-          modalImage.dataset.ok = '0';
-          modalImage.onload = function () {
-            window.__onCatalogImgLoad(modalImage);
+    function openDetailsModal(id) {
+      const numericId = parseInt(id, 10);
+      if (isNaN(numericId) || numericId < 1 || numericId > TOTAL_STYLES || HIDDEN_SET.has(numericId)) return;
+      currentModalProductId = numericId;
+      const item = catalog[numericId - 1];
+      const qty = selection[numericId] || 0;
+      const { list, idx } = getModalNavList();
+      modalImageZoomWrap.classList.remove('zoomed');
+      modalCodeBadge.textContent = item.code;
+      modalPositionIndicator.textContent = (list.length < visibleCatalog.length || HIDDEN_SET.size > 0)
+        ? `Style ${item.code} (${idx + 1} of ${list.length})`
+        : `Style ${item.code} of ${visibleCatalog.length}`;
+      const showNavBtns = list.length > 1;
+      modalPrevBtn.classList.toggle('hidden', !showNavBtns);
+      modalNextBtn.classList.toggle('hidden', !showNavBtns);
+      modalBrandTitle.textContent = item.brand;
+      modalCustomSubtitle.textContent = item.note
+        ? `${item.note} (${item.volume}) · USA Warehouse Fast Delivery`
+        : `Catalog Style ${item.code} (${item.volume}) · USA Warehouse Fast Delivery`;
+      const token = ++modalLoadToken;
+      const candidates = getCandidateUrls(numericId, true);
+      const cardImg = perfumesGrid.querySelector(`img[data-pid="${numericId}"]`);
+      const rawCardSrc = (cardImg && cardImg.complete && cardImg.naturalWidth > 0) ? (cardImg.currentSrc || cardImg.src) : '';
+      const cachedThumb = rawCardSrc && !rawCardSrc.startsWith('data:') ? rawCardSrc : '';
+      modalImage.dataset.pid = String(numericId);
+      modalImage.dataset.stage = '0';
+      modalImage.alt = `${item.code} ${item.brand}`;
+      modalQtyInput.value = String(qty);
+      if (cachedThumb) {
+        modalImage.onload = null;
+        modalImage.onerror = null;
+        modalImage.dataset.ok = '1';
+        modalImage.src = cachedThumb;
+        if (cachedThumb.includes('w=300')) {
+          let hiStage = 0;
+          const hiImg = new Image();
+          hiImg.referrerPolicy = 'no-referrer';
+          hiImg.onload = function () {
+            if (token !== modalLoadToken) return;
+            modalImage.src = hiImg.src;
+            preloadedHighRes.add(numericId);
           };
-          modalImage.onerror = function () {
-            window.__onCatalogImgErr(modalImage, numericId);
+          hiImg.onerror = function () {
+            if (token !== modalLoadToken) return;
+            hiStage += 1;
+            if (hiStage < candidates.length) { hiImg.src = candidates[hiStage]; }
           };
-          modalImage.src = candidates[0];
+          hiImg.src = candidates[0];
         }
-
-        if (list.length > 1) {
-          preloadHighRes(list[(idx + 1) % list.length].id);
-          preloadHighRes(list[(idx - 1 + list.length) % list.length].id);
-        }
-
-        if (!detailsDialog.open) {
-          pushModalHistoryIfNeeded();
-          detailsDialog.showModal();
-        }
-      }
-
-      if ('IntersectionObserver' in window) {
-        const io = new IntersectionObserver((entries) => {
-          if (entries.some(e => e.isIntersecting)) {
-            appendNextBatch();
-          }
-        }, { rootMargin: '600px' });
-        io.observe(loadMoreSentinel);
       } else {
-        window.addEventListener('scroll', () => {
-          if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 800) {
-            appendNextBatch();
-          }
-        }, { passive: true });
+        modalImage.removeAttribute('src');
+        modalImage.dataset.ok = '0';
+        modalImage.onload = function () { window.__onCatalogImgLoad(modalImage); };
+        modalImage.onerror = function () { window.__onCatalogImgErr(modalImage, numericId); };
+        modalImage.src = candidates[0];
       }
-
-      // ==================== EVENT LISTENERS ====================
-
-      brandPillsContainer.addEventListener('click', (e) => {
-        const btn = e.target.closest('button[data-brand]');
-        if (!btn) return;
-        activeBrand = btn.getAttribute('data-brand') || 'All';
-        renderBrandPills();
-        renderCatalogGrid();
-      });
-
-      toggleSelectedOnlyBtn.addEventListener('click', () => {
-        showSelectedOnly = !showSelectedOnly;
-        renderCatalogGrid();
-        updateSelectionSummaryUI();
-      });
-
-      searchInput.addEventListener('input', (e) => {
-        searchQuery = e.target.value || '';
-        clearSearchBtn.classList.toggle('hidden', searchQuery.length === 0);
-        renderCatalogGrid();
-      });
-
-      clearSearchBtn.addEventListener('click', () => {
-        searchQuery = '';
-        searchInput.value = '';
-        clearSearchBtn.classList.add('hidden');
-        renderCatalogGrid();
-        searchInput.focus();
-      });
-
-      function resetAllFilters() {
-        activeBrand = 'All';
-        searchQuery = '';
-        showSelectedOnly = false;
-        searchInput.value = '';
-        clearSearchBtn.classList.add('hidden');
-        renderBrandPills();
-        renderCatalogGrid();
-        updateSelectionSummaryUI();
+      if (list.length > 1) {
+        preloadHighRes(list[(idx + 1) % list.length].id);
+        preloadHighRes(list[(idx - 1 + list.length) % list.length].id);
       }
+      if (!detailsDialog.open) { pushModalHistoryIfNeeded(); detailsDialog.showModal(); }
+    }
 
-      resetFiltersInlineBtn.addEventListener('click', resetAllFilters);
-      document.getElementById('empty-reset-btn').addEventListener('click', resetAllFilters);
-      document.getElementById('logo-reset-link').addEventListener('click', (e) => {
-        e.preventDefault();
-        resetAllFilters();
-        window.scrollTo({ top: 0, behavior: 'auto' });
-      });
-
-      perfumesGrid.addEventListener('pointerdown', (e) => {
-        const trigger = e.target.closest('[data-open-details]');
-        if (trigger) {
-          preloadHighRes(parseInt(trigger.getAttribute('data-open-details'), 10));
-        }
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        if (entries.some(e => e.isIntersecting)) appendNextBatch();
+      }, { rootMargin: '600px' });
+      io.observe(loadMoreSentinel);
+    } else {
+      window.addEventListener('scroll', () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 800) appendNextBatch();
       }, { passive: true });
+    }
 
-      perfumesGrid.addEventListener('click', (e) => {
-        const actionBtn = e.target.closest('button[data-action]');
-        if (actionBtn) {
-          e.stopPropagation();
-          const id = parseInt(actionBtn.getAttribute('data-id'), 10);
-          const action = actionBtn.getAttribute('data-action');
-          const currentQty = selection[id] || 0;
-          if (action === 'add' || action === 'inc') {
-            setProductQuantity(id, currentQty + 1);
-          } else if (action === 'dec') {
-            setProductQuantity(id, currentQty - 1);
-          }
-          return;
-        }
+    brandPillsContainer.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-brand]');
+      if (!btn) return;
+      activeBrand = btn.getAttribute('data-brand') || 'All';
+      renderBrandPills();
+      renderCatalogGrid();
+    });
 
-        const openTrigger = e.target.closest('[data-open-details]');
-        if (openTrigger) {
-          const id = parseInt(openTrigger.getAttribute('data-open-details'), 10);
-          openDetailsModal(id);
-        }
-      });
+    toggleSelectedOnlyBtn.addEventListener('click', () => {
+      showSelectedOnly = !showSelectedOnly;
+      renderCatalogGrid();
+      updateSelectionSummaryUI();
+    });
 
-      perfumesGrid.addEventListener('change', (e) => {
-        const input = e.target.closest('input[data-action="input"]');
-        if (!input) return;
-        const id = parseInt(input.getAttribute('data-id'), 10);
-        setProductQuantity(id, parseInt(input.value, 10) || 0);
-      });
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value || '';
+      clearSearchBtn.classList.toggle('hidden', searchQuery.length === 0);
+      renderCatalogGrid();
+    });
 
-      document.getElementById('close-details-btn').addEventListener('click', () => detailsDialog.close());
-      detailsDialog.addEventListener('click', (e) => {
-        if (e.target === detailsDialog) detailsDialog.close();
-      });
+    clearSearchBtn.addEventListener('click', () => {
+      searchQuery = '';
+      searchInput.value = '';
+      clearSearchBtn.classList.add('hidden');
+      renderCatalogGrid();
+      searchInput.focus();
+    });
 
-      const modalImageScroll = document.getElementById('modal-image-scroll');
-      let isDraggingZoom = false;
-      let hasDraggedZoom = false;
-      let dragStartX = 0;
-      let dragStartY = 0;
-      let dragScrollLeft = 0;
-      let dragScrollTop = 0;
-
-      modalImageScroll.addEventListener('mousedown', (e) => {
-        if (!modalImageZoomWrap.classList.contains('zoomed')) return;
-        isDraggingZoom = true;
-        hasDraggedZoom = false;
-        dragStartX = e.pageX - modalImageScroll.offsetLeft;
-        dragStartY = e.pageY - modalImageScroll.offsetTop;
-        dragScrollLeft = modalImageScroll.scrollLeft;
-        dragScrollTop = modalImageScroll.scrollTop;
-      });
-
-      window.addEventListener('mousemove', (e) => {
-        if (!isDraggingZoom) return;
-        const x = e.pageX - modalImageScroll.offsetLeft;
-        const y = e.pageY - modalImageScroll.offsetTop;
-        const walkX = x - dragStartX;
-        const walkY = y - dragStartY;
-        if (Math.abs(walkX) > 4 || Math.abs(walkY) > 4) {
-          hasDraggedZoom = true;
-        }
-        modalImageScroll.scrollLeft = dragScrollLeft - walkX;
-        modalImageScroll.scrollTop = dragScrollTop - walkY;
-      });
-
-      window.addEventListener('mouseup', () => {
-        isDraggingZoom = false;
-      });
-
-      modalImageZoomWrap.addEventListener('click', (e) => {
-        if (e.target.closest('button')) return;
-        if (hasDraggedZoom) {
-          hasDraggedZoom = false;
-          return;
-        }
-        const willZoom = !modalImageZoomWrap.classList.contains('zoomed');
-        modalImageZoomWrap.classList.toggle('zoomed', willZoom);
-        if (willZoom) {
-          requestAnimationFrame(() => {
-            modalImageScroll.scrollLeft = (modalImageScroll.scrollWidth - modalImageScroll.clientWidth) / 2;
-            modalImageScroll.scrollTop = (modalImageScroll.scrollHeight - modalImageScroll.clientHeight) / 2;
-          });
-        } else {
-          modalImageScroll.scrollLeft = 0;
-          modalImageScroll.scrollTop = 0;
-        }
-      });
-
-      function syncBodyScrollLock() {
-        const anyOpen = detailsDialog.open || selectionDialog.open;
-        document.documentElement.style.overflow = anyOpen ? 'hidden' : '';
-        document.body.style.overflow = anyOpen ? 'hidden' : '';
-      }
-
-      const dialogObserver = new MutationObserver(syncBodyScrollLock);
-      dialogObserver.observe(detailsDialog, { attributes: true, attributeFilter: ['open'] });
-      dialogObserver.observe(selectionDialog, { attributes: true, attributeFilter: ['open'] });
-
-      function handleDialogClosed() {
-        setTimeout(() => {
-          if (!detailsDialog.open && !selectionDialog.open && modalHistoryPushed && !isClosingFromPopstate) {
-            modalHistoryPushed = false;
-            try {
-              history.back();
-            } catch (e) {}
-          }
-        }, 20);
-      }
-
-      detailsDialog.addEventListener('close', handleDialogClosed);
-      selectionDialog.addEventListener('close', handleDialogClosed);
-
-      window.addEventListener('popstate', () => {
-        if (detailsDialog.open || selectionDialog.open) {
-          isClosingFromPopstate = true;
-          modalHistoryPushed = false;
-          if (detailsDialog.open) detailsDialog.close();
-          if (selectionDialog.open) selectionDialog.close();
-          setTimeout(() => {
-            isClosingFromPopstate = false;
-          }, 30);
-        } else {
-          modalHistoryPushed = false;
-        }
-      });
-
-      document.addEventListener('touchmove', (e) => {
-        if (!detailsDialog.open && !selectionDialog.open) return;
-        if (!e.target.closest('dialog[open]')) {
-          e.preventDefault();
-        }
-      }, { passive: false });
-
-      modalPrevBtn.addEventListener('click', () => {
-        navigateDetailsModal(-1);
-      });
-
-      modalNextBtn.addEventListener('click', () => {
-        navigateDetailsModal(1);
-      });
-
-      document.getElementById('modal-dec-btn').addEventListener('click', () => {
-        const current = selection[currentModalProductId] || 0;
-        setProductQuantity(currentModalProductId, current - 1);
-      });
-
-      document.getElementById('modal-inc-btn').addEventListener('click', () => {
-        const current = selection[currentModalProductId] || 0;
-        setProductQuantity(currentModalProductId, current + 1);
-      });
-
-      modalQtyInput.addEventListener('change', () => {
-        setProductQuantity(currentModalProductId, parseInt(modalQtyInput.value, 10) || 0);
-      });
-
-      document.getElementById('modal-clear-item-btn').addEventListener('click', () => {
-        setProductQuantity(currentModalProductId, 0);
-      });
-
-      document.querySelectorAll('.modal-quick-add').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const delta = parseInt(btn.getAttribute('data-quick-add'), 10) || 1;
-          const current = selection[currentModalProductId] || 0;
-          setProductQuantity(currentModalProductId, current + delta);
-        });
-      });
-
-      document.getElementById('modal-filter-by-brand-btn').addEventListener('click', () => {
-        const item = catalog[currentModalProductId - 1];
-        if (!item) return;
-        activeBrand = item.brand;
-        detailsDialog.close();
-        renderBrandPills();
-        renderCatalogGrid();
-      });
-
-      document.getElementById('modal-open-selection-btn').addEventListener('click', () => {
-        detailsDialog.close();
-        pushModalHistoryIfNeeded();
-        selectionDialog.showModal();
-      });
-
-      window.addEventListener('keydown', (e) => {
-        if (detailsDialog.open) {
-          if (e.key === 'ArrowLeft') {
-            e.preventDefault();
-            navigateDetailsModal(-1);
-          } else if (e.key === 'ArrowRight') {
-            e.preventDefault();
-            navigateDetailsModal(1);
-          }
-        }
-      });
-
-      document.getElementById('open-selection-btn').addEventListener('click', () => {
-        pushModalHistoryIfNeeded();
-        selectionDialog.showModal();
-      });
-      document.getElementById('floating-open-drawer-btn').addEventListener('click', () => {
-        pushModalHistoryIfNeeded();
-        selectionDialog.showModal();
-      });
-      document.getElementById('close-selection-btn').addEventListener('click', () => {
-        selectionDialog.close();
-      });
-      selectionDialog.addEventListener('click', (e) => {
-        if (e.target === selectionDialog) selectionDialog.close();
-      });
-
-      clearAllSelectionBtn.addEventListener('click', () => {
-        selection = {};
-        saveSelection();
-        renderCatalogGrid();
-        updateSelectionSummaryUI();
-        showToast('Selection cleared');
-      });
-
-      selectionItemsList.addEventListener('click', (e) => {
-        const btn = e.target.closest('button[data-drawer-action]');
-        if (btn) {
-          const id = parseInt(btn.getAttribute('data-id'), 10);
-          const action = btn.getAttribute('data-drawer-action');
-          const current = selection[id] || 0;
-          if (action === 'inc') setProductQuantity(id, current + 1);
-          else if (action === 'dec') setProductQuantity(id, current - 1);
-          else if (action === 'remove') setProductQuantity(id, 0);
-          return;
-        }
-        const openDetails = e.target.closest('[data-drawer-open-details]');
-        if (openDetails) {
-          const id = parseInt(openDetails.getAttribute('data-drawer-open-details'), 10);
-          selectionDialog.close();
-          openDetailsModal(id);
-        }
-      });
-
-      selectionItemsList.addEventListener('change', (e) => {
-        const input = e.target.closest('input[data-drawer-action="input"]');
-        if (!input) return;
-        const id = parseInt(input.getAttribute('data-id'), 10);
-        setProductQuantity(id, parseInt(input.value, 10) || 0);
-      });
-
-      document.getElementById('drawer-copy-btn').addEventListener('click', copySelectionToClipboard);
-      document.getElementById('floating-copy-btn').addEventListener('click', copySelectionToClipboard);
-
-      window.addEventListener('beforeunload', () => {
-        window.scrollTo(0, 0);
-      });
-
-      window.addEventListener('pageshow', (e) => {
-        if (e.persisted) {
-          window.scrollTo(0, 0);
-        }
-        setTimeout(recoverStalledImages, 150);
-      });
-
-      document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'visible') {
-          setTimeout(recoverStalledImages, 150);
-        }
-      });
-
-      buildCatalog();
+    function resetAllFilters() {
+      activeBrand = 'All';
+      searchQuery = '';
+      showSelectedOnly = false;
+      searchInput.value = '';
+      clearSearchBtn.classList.add('hidden');
       renderBrandPills();
       renderCatalogGrid();
       updateSelectionSummaryUI();
-      setTimeout(recoverStalledImages, 2000);
-      window.scrollTo(0, 0);
-    })();
+    }
+
+    resetFiltersInlineBtn.addEventListener('click', resetAllFilters);
+    document.getElementById('empty-reset-btn').addEventListener('click', resetAllFilters);
+    document.getElementById('logo-reset-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      resetAllFilters();
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    });
+
+    perfumesGrid.addEventListener('pointerdown', (e) => {
+      const trigger = e.target.closest('[data-open-details]');
+      if (trigger) { preloadHighRes(parseInt(trigger.getAttribute('data-open-details'), 10)); }
+    }, { passive: true });
+
+    perfumesGrid.addEventListener('click', (e) => {
+      const actionBtn = e.target.closest('button[data-action]');
+      if (actionBtn) {
+        e.stopPropagation();
+        const id = parseInt(actionBtn.getAttribute('data-id'), 10);
+        const action = actionBtn.getAttribute('data-action');
+        const currentQty = selection[id] || 0;
+        if (action === 'add' || action === 'inc') setProductQuantity(id, currentQty + 1);
+        else if (action === 'dec') setProductQuantity(id, currentQty - 1);
+        return;
+      }
+      const openTrigger = e.target.closest('[data-open-details]');
+      if (openTrigger) { openDetailsModal(parseInt(openTrigger.getAttribute('data-open-details'), 10)); }
+    });
+
+    perfumesGrid.addEventListener('change', (e) => {
+      const input = e.target.closest('input[data-action="input"]');
+      if (!input) return;
+      setProductQuantity(parseInt(input.getAttribute('data-id'), 10), parseInt(input.value, 10) || 0);
+    });
+
+    document.getElementById('close-details-btn').addEventListener('click', () => detailsDialog.close());
+    detailsDialog.addEventListener('click', (e) => { if (e.target === detailsDialog) detailsDialog.close(); });
+
+    const modalImageScroll = document.getElementById('modal-image-scroll');
+    let isDraggingZoom = false;
+    let hasDraggedZoom = false;
+    let dragStartX = 0;
+    let dragStartY = 0;
+    let dragScrollLeft = 0;
+    let dragScrollTop = 0;
+
+    modalImageScroll.addEventListener('mousedown', (e) => {
+      if (!modalImageZoomWrap.classList.contains('zoomed')) return;
+      isDraggingZoom = true;
+      hasDraggedZoom = false;
+      dragStartX = e.pageX - modalImageScroll.offsetLeft;
+      dragStartY = e.pageY - modalImageScroll.offsetTop;
+      dragScrollLeft = modalImageScroll.scrollLeft;
+      dragScrollTop = modalImageScroll.scrollTop;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDraggingZoom) return;
+      const walkX = (e.pageX - modalImageScroll.offsetLeft) - dragStartX;
+      const walkY = (e.pageY - modalImageScroll.offsetTop) - dragStartY;
+      if (Math.abs(walkX) > 4 || Math.abs(walkY) > 4) hasDraggedZoom = true;
+      modalImageScroll.scrollLeft = dragScrollLeft - walkX;
+      modalImageScroll.scrollTop = dragScrollTop - walkY;
+    });
+
+    window.addEventListener('mouseup', () => { isDraggingZoom = false; });
+
+    modalImageZoomWrap.addEventListener('click', (e) => {
+      if (e.target.closest('button')) return;
+      if (hasDraggedZoom) { hasDraggedZoom = false; return; }
+      const willZoom = !modalImageZoomWrap.classList.contains('zoomed');
+      modalImageZoomWrap.classList.toggle('zoomed', willZoom);
+      if (willZoom) {
+        requestAnimationFrame(() => {
+          modalImageScroll.scrollLeft = (modalImageScroll.scrollWidth - modalImageScroll.clientWidth) / 2;
+          modalImageScroll.scrollTop = (modalImageScroll.scrollHeight - modalImageScroll.clientHeight) / 2;
+        });
+      } else {
+        modalImageScroll.scrollLeft = 0;
+        modalImageScroll.scrollTop = 0;
+      }
+    });
+
+    function syncBodyScrollLock() {
+      const anyOpen = detailsDialog.open || selectionDialog.open;
+      document.documentElement.style.overflow = anyOpen ? 'hidden' : '';
+      document.body.style.overflow = anyOpen ? 'hidden' : '';
+    }
+
+    const dialogObserver = new MutationObserver(syncBodyScrollLock);
+    dialogObserver.observe(detailsDialog, { attributes: true, attributeFilter: ['open'] });
+    dialogObserver.observe(selectionDialog, { attributes: true, attributeFilter: ['open'] });
+
+    function handleDialogClosed() {
+      setTimeout(() => {
+        if (!detailsDialog.open && !selectionDialog.open && modalHistoryPushed && !isClosingFromPopstate) {
+          modalHistoryPushed = false;
+          try { history.back(); } catch (e) {}
+        }
+      }, 20);
+    }
+
+    detailsDialog.addEventListener('close', handleDialogClosed);
+    selectionDialog.addEventListener('close', handleDialogClosed);
+
+    window.addEventListener('popstate', () => {
+      if (detailsDialog.open || selectionDialog.open) {
+        isClosingFromPopstate = true;
+        modalHistoryPushed = false;
+        if (detailsDialog.open) detailsDialog.close();
+        if (selectionDialog.open) selectionDialog.close();
+        setTimeout(() => { isClosingFromPopstate = false; }, 30);
+      } else {
+        modalHistoryPushed = false;
+      }
+    });
+
+    document.addEventListener('touchmove', (e) => {
+      if (!detailsDialog.open && !selectionDialog.open) return;
+      if (!e.target.closest('dialog[open]')) e.preventDefault();
+    }, { passive: false });
+
+    modalPrevBtn.addEventListener('click', () => navigateDetailsModal(-1));
+    modalNextBtn.addEventListener('click', () => navigateDetailsModal(1));
+    document.getElementById('modal-dec-btn').addEventListener('click', () => setProductQuantity(currentModalProductId, (selection[currentModalProductId] || 0) - 1));
+    document.getElementById('modal-inc-btn').addEventListener('click', () => setProductQuantity(currentModalProductId, (selection[currentModalProductId] || 0) + 1));
+    modalQtyInput.addEventListener('change', () => setProductQuantity(currentModalProductId, parseInt(modalQtyInput.value, 10) || 0));
+    document.getElementById('modal-clear-item-btn').addEventListener('click', () => setProductQuantity(currentModalProductId, 0));
+
+    document.querySelectorAll('.modal-quick-add').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const delta = parseInt(btn.getAttribute('data-quick-add'), 10) || 1;
+        setProductQuantity(currentModalProductId, (selection[currentModalProductId] || 0) + delta);
+      });
+    });
+
+    document.getElementById('modal-filter-by-brand-btn').addEventListener('click', () => {
+      const item = catalog[currentModalProductId - 1];
+      if (!item) return;
+      activeBrand = item.brand;
+      detailsDialog.close();
+      renderBrandPills();
+      renderCatalogGrid();
+    });
+
+    document.getElementById('modal-open-selection-btn').addEventListener('click', () => {
+      detailsDialog.close();
+      pushModalHistoryIfNeeded();
+      selectionDialog.showModal();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (detailsDialog.open) {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); navigateDetailsModal(-1); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); navigateDetailsModal(1); }
+      }
+    });
+
+    document.getElementById('open-selection-btn').addEventListener('click', () => { pushModalHistoryIfNeeded(); selectionDialog.showModal(); });
+    document.getElementById('floating-open-drawer-btn').addEventListener('click', () => { pushModalHistoryIfNeeded(); selectionDialog.showModal(); });
+    document.getElementById('close-selection-btn').addEventListener('click', () => selectionDialog.close());
+    selectionDialog.addEventListener('click', (e) => { if (e.target === selectionDialog) selectionDialog.close(); });
+
+    clearAllSelectionBtn.addEventListener('click', () => {
+      selection = {};
+      saveSelection();
+      renderCatalogGrid();
+      updateSelectionSummaryUI();
+      showToast('Selection cleared');
+    });
+
+    selectionItemsList.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-drawer-action]');
+      if (btn) {
+        const id = parseInt(btn.getAttribute('data-id'), 10);
+        const action = btn.getAttribute('data-drawer-action');
+        const current = selection[id] || 0;
+        if (action === 'inc') setProductQuantity(id, current + 1);
+        else if (action === 'dec') setProductQuantity(id, current - 1);
+        else if (action === 'remove') setProductQuantity(id, 0);
+        return;
+      }
+      const openDetails = e.target.closest('[data-drawer-open-details]');
+      if (openDetails) {
+        selectionDialog.close();
+        openDetailsModal(parseInt(openDetails.getAttribute('data-drawer-open-details'), 10));
+      }
+    });
+
+    selectionItemsList.addEventListener('change', (e) => {
+      const input = e.target.closest('input[data-drawer-action="input"]');
+      if (!input) return;
+      setProductQuantity(parseInt(input.getAttribute('data-id'), 10), parseInt(input.value, 10) || 0);
+    });
+
+    document.getElementById('drawer-copy-btn').addEventListener('click', copySelectionToClipboard);
+    document.getElementById('floating-copy-btn').addEventListener('click', copySelectionToClipboard);
+
+    window.addEventListener('beforeunload', () => { window.scrollTo(0, 0); });
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted) window.scrollTo(0, 0);
+      setTimeout(recoverStalledImages, 150);
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') setTimeout(recoverStalledImages, 150);
+    });
+
+    buildCatalog();
+    renderBrandPills();
+    renderCatalogGrid();
+    updateSelectionSummaryUI();
+    setTimeout(recoverStalledImages, 2000);
+    window.scrollTo(0, 0);
+  })();
   </script>
 </body>
 </html>
