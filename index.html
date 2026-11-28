@@ -72,7 +72,7 @@
       .header-inner { padding: 0.875rem 2rem; }
     }
 
-    /* Main & Hero (Option C) */
+    /* Main & Hero */
     main { flex: 1; max-width: 80rem; width: 100%; margin: 0 auto; padding: 1.25rem 1rem 6rem; min-height: 75vh; }
     @media (min-width: 640px) { main { padding: 2rem 1.5rem 6rem; } }
     @media (min-width: 1024px) { main { padding: 2rem 2rem 6rem; } }
@@ -575,13 +575,6 @@
         171: { note: "Perfect Eau de Parfum", volume: "100ML" }
       };
 
-      // Exact uploaded files for #14, #61, #171 (e.g. images/14正.webp)
-      const CUSTOM_IMAGE_MAP = {
-        14: './images/14%E6%AD%A3.webp',
-        61: './images/61%E6%AD%A3.webp',
-        171: './images/171%E6%AD%A3.webp'
-      };
-
       // External CDN fallback if any local repo webp is missing
       function getShardedCdnUrls(num, highRes = false) {
         const n3 = String(num).padStart(3, '0');
@@ -614,18 +607,11 @@
         const localExtra = [
           `./images/${n1}.WEBP`,
           `./images/${n3}.WEBP`,
-          `./images/${n2}.WEBP`,
-          `./images/${n1}%E6%AD%A3.webp`,
-          `./images/${n2}%E6%AD%A3.webp`,
-          `./images/${n3}%E6%AD%A3.webp`
+          `./images/${n2}.WEBP`
         ];
 
         const shardedCdns = getShardedCdnUrls(num, highRes);
-        const list = CUSTOM_IMAGE_MAP[num]
-          ? [CUSTOM_IMAGE_MAP[num], ...localPrimary, ...localExtra, ...shardedCdns]
-          : [...localPrimary, ...localExtra, ...shardedCdns];
-
-        return Array.from(new Set(list));
+        return Array.from(new Set([...localPrimary, ...localExtra, ...shardedCdns]));
       }
 
       function resolveAbsoluteUrl(url) {
