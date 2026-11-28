@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://wuhuo-factory.github.io/perfume-catalog/" />
   <meta property="og:title" content="WuHuo Factory · Perfume Catalog (#01–#176)" />
   <meta property="og:description" content="Explore 176 fragrances · USA warehouse, 2–5 business day delivery! Choose your styles, set quantities, and send your selection for a quote." />
-  <meta property="og:image" content="https://wsrv.nl/?url=perfume-catalog.akazhiyu.chatgpt.site/images/001.webp&w=800&output=jpg" />
+  <meta property="og:image" content="https://wsrv.nl/?url=https%3A%2F%2Fwuhuo-factory.github.io%2Fperfume-catalog%2Fimages%2F1%25E6%25AD%25A3.webp&w=800&output=jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23181512'/%3E%3Crect x='25' y='10' width='14' height='6' rx='2' fill='none' stroke='%23B89146' stroke-width='3.5'/%3E%3Cpath d='M28 16v5h8v-5' fill='none' stroke='%23B89146' stroke-width='3.5'/%3E%3Crect x='16' y='21' width='32' height='31' rx='6' fill='none' stroke='%23B89146' stroke-width='3.5'/%3E%3Crect x='23' y='30' width='18' height='13' rx='2.5' fill='none' stroke='%23B89146' stroke-width='3'/%3E%3C/svg%3E" />
@@ -498,7 +498,10 @@
     (function () {
       'use strict';
 
-      const ORIGIN_IMAGE_BASE = 'https://perfume-catalog.akazhiyu.chatgpt.site/images/';
+      const REPO_HOST_PATH = 'wuhuo-factory.github.io/perfume-catalog/images/';
+      const REPO_IMAGE_ORIGIN = `https://${REPO_HOST_PATH}`;
+      const FILE_SUFFIX_ENC = '%E6%AD%A3.webp';
+      const ZERO_PAD2_IDS = new Set([6]);
       const TOTAL_STYLES = 176;
       const BATCH_SIZE = 24;
       const STORAGE_KEY_SELECTION = 'wuhuo_perfume_selection_176_v1';
@@ -573,31 +576,48 @@
         171: { note: "Perfect Eau de Parfum", volume: "100ML" }
       };
 
-      // Distribute across 3 independent CDN domains to bypass 6-connection-per-domain caps
+      function getPrimaryFileName(num) {
+        const base = ZERO_PAD2_IDS.has(num) ? String(num).padStart(2, '0') : String(num);
+        return `${base}${FILE_SUFFIX_ENC}`;
+      }
+
+      // Shard across 3 CDN proxies backed exclusively by our own GitHub Pages repository
       function getShardedCdnUrls(num, highRes = false) {
-        const n3 = String(num).padStart(3, '0');
+        const fileName = getPrimaryFileName(num);
+        const originUrl = `${REPO_IMAGE_ORIGIN}${fileName}`;
+        const encodedOriginUrl = encodeURIComponent(originUrl);
         const width = highRes ? 800 : 300;
         const quality = highRes ? 82 : 72;
         const shards = [
-          `https://i0.wp.com/perfume-catalog.akazhiyu.chatgpt.site/images/${n3}.webp?w=${width}&quality=${quality}`,
-          `https://wsrv.nl/?url=perfume-catalog.akazhiyu.chatgpt.site/images/${n3}.webp&w=${width}&q=${quality}&output=webp`,
-          `https://images.weserv.nl/?url=perfume-catalog.akazhiyu.chatgpt.site/images/${n3}.webp&w=${width}&q=${quality}&output=webp`
+          `https://i0.wp.com/${REPO_HOST_PATH}${fileName}?ssl=1&w=${width}&quality=${quality}`,
+          `https://wsrv.nl/?url=${encodedOriginUrl}&w=${width}&q=${quality}&output=webp`,
+          `https://images.weserv.nl/?url=${encodedOriginUrl}&w=${width}&q=${quality}&output=webp`
         ];
         const offset = num % 3;
-        return [shards[offset], shards[(offset + 1) % 3], shards[(offset + 2) % 3], `${ORIGIN_IMAGE_BASE}${n3}.webp`];
+        return [shards[offset], shards[(offset + 1) % 3], shards[(offset + 2) % 3]];
       }
 
       function getCandidateUrls(num, highRes = false) {
+        const primaryFile = getPrimaryFileName(num);
         const n1 = String(num);
         const n2 = String(num).padStart(2, '0');
         const n3 = String(num).padStart(3, '0');
         const shardedCdns = getShardedCdnUrls(num, highRes);
-        const localFallbacks = [
-          `./images/${n3}.webp`,
-          `./images/${n1}.webp`,
-          `./images/${n2}.webp`
+
+        const repoFallbacks = [
+          `./images/${primaryFile}`,
+          `${REPO_IMAGE_ORIGIN}${primaryFile}`
         ];
-        return Array.from(new Set([...shardedCdns, ...localFallbacks]));
+
+        if (num < 10) {
+          const altBase = ZERO_PAD2_IDS.has(num) ? n1 : n2;
+          const altFile = `${altBase}${FILE_SUFFIX_ENC}`;
+          repoFallbacks.push(`./images/${altFile}`, `${REPO_IMAGE_ORIGIN}${altFile}`);
+        }
+
+        repoFallbacks.push(`./images/${n1}.webp`, `./images/${n3}.webp`);
+
+        return Array.from(new Set([...shardedCdns, ...repoFallbacks]));
       }
 
       function formatStyleCode(num) {
@@ -1279,7 +1299,7 @@
           modalImage.dataset.ok = '1';
           modalImage.src = cachedThumb;
 
-          if (cachedThumb !== candidates[0]) {
+          if (cachedThumb.includes('w=300')) {
             let hiStage = 0;
             const hiImg = new Image();
             hiImg.referrerPolicy = 'no-referrer';
