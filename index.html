@@ -1053,7 +1053,7 @@
             <div class="card-body">
               <div class="card-info" data-open-details="${item.id}">
                 <div class="card-brand">${item.brand.toUpperCase()}</div>
-                <div class="card-title">${item.brand} ${item.note || 'Eau de Parfum'}</div>
+                <div class="card-title">${item.note ? `${item.brand} ${item.note}` : `${item.brand} ${item.code}`}</div>
               </div>
               <div data-card-action-wrap="${item.id}">
                 ${getCardActionMarkup(item.id, item.code, qty)}
