@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="no-referrer" />
   <title>WuHuo Factory · Perfume Catalog</title>
-  <meta name="description" content="Explore 176 designer & niche fragrances from WuHuo Factory. USA warehouse, 2-5 days fast delivery. Choose styles, set quantities, and send your selection for a quote." />
+  <meta name="description" content="Explore 176 designer & niche fragrances from WuHuo Factory. US warehouse, 2–5 business day delivery. Choose styles, set quantities, and send your selection for a quote." />
 
   <!-- Open Graph / Social Share Preview -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://wuhuo-factory.github.io/perfume-catalog/" />
   <meta property="og:title" content="WuHuo Factory · Perfume Catalog (#01–#176)" />
-  <meta property="og:description" content="Explore 176 fragrances · USA warehouse, 2-5 fast delivery! Choose your styles, set quantities, and send your selection for a quote." />
+  <meta property="og:description" content="Explore 176 fragrances · US warehouse, 2–5 business day delivery! Choose your styles, set quantities, and send your selection for wholesale pricing." />
   <meta property="og:image" content="https://wsrv.nl/?url=perfume-catalog.akazhiyu.chatgpt.site/images/001.webp&w=800&output=jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
@@ -71,26 +71,31 @@
       .header-inner { padding: 0.875rem 2rem; }
     }
 
-    /* Main & Hero */
-    main { flex: 1; max-width: 80rem; width: 100%; margin: 0 auto; padding: 2rem 1rem 6rem; min-height: 75vh; }
+    /* Main & Hero (Option C: Compact Editorial Wholesale) */
+    main { flex: 1; max-width: 80rem; width: 100%; margin: 0 auto; padding: 1.25rem 1rem 6rem; min-height: 75vh; }
     @media (min-width: 640px) { main { padding: 2rem 1.5rem 6rem; } }
-    @media (min-width: 1024px) { main { padding: 2rem 2rem 6rem; } }
-    .hero-section { text-align: center; max-width: 48rem; margin: 0 auto 2rem; }
-    .hero-title { font-family: var(--font-serif); font-weight: 600; font-size: 1.875rem; line-height: 1.1; letter-spacing: -0.01em; color: var(--text-primary); margin: 0 0 1rem; }
-    .hero-title em { font-style: italic; font-weight: 500; color: var(--accent-gold-dark); }
-    .hero-desc { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin: 0 0 1.25rem; }
-    .hero-br { display: none; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.5rem 1.15rem; border-radius: 9999px; background: #181512; border: 1.5px solid #B89146; box-shadow: 0 6px 18px rgba(24, 21, 18, 0.14); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.01em; color: #FAF7F2; }
-    .hero-dot { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: var(--accent-gold); }
+    @media (min-width: 1024px) { main { padding: 2.25rem 2rem 6rem; } }
+
+    .hero-section { text-align: center; max-width: 46rem; margin: 0 auto 1.4rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border-subtle); }
+    .hero-eyebrow { display: inline-flex; align-items: center; justify-content: center; gap: 0.65rem; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent-gold-dark); margin: 0 0 0.5rem; }
+    .hero-eyebrow::before, .hero-eyebrow::after { content: ""; width: 1.5rem; height: 1px; background: var(--accent-gold); opacity: 0.65; }
+    .hero-title { font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.55rem, 5.6vw, 2.85rem); line-height: 1.15; letter-spacing: -0.015em; color: var(--text-primary); margin: 0 0 0.75rem; }
+    .hero-steps { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.3rem 0.55rem; font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.5; margin: 0 0 0.9rem; }
+    .hero-step { display: inline-flex; align-items: center; gap: 0.3rem; white-space: nowrap; }
+    .hero-step-num { display: inline-flex; align-items: center; justify-content: center; width: 1.15rem; height: 1.15rem; border-radius: 9999px; background: var(--bg-secondary); border: 1px solid var(--border-strong); color: var(--accent-gold-dark); font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; }
+    .hero-step-sep { color: var(--border-strong); font-size: 0.75rem; user-select: none; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.36rem 0.9rem; border-radius: 9999px; background: #EFE7D8; border: 1px solid #DBC8A6; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.01em; color: #2E2720; }
+    .hero-badge strong { color: var(--accent-gold-dark); font-weight: 700; }
+    .hero-dot { width: 0.45rem; height: 0.45rem; border-radius: 9999px; background: var(--accent-gold); flex-shrink: 0; }
+
     @media (min-width: 640px) {
-      .hero-section { margin-bottom: 2.5rem; }
-      .hero-title { font-size: 3rem; }
-      .hero-desc { font-size: 1rem; }
-      .hero-br { display: inline; }
-      .hero-badge { font-size: 0.9375rem; padding: 0.55rem 1.35rem; }
-    }
-    @media (min-width: 1024px) {
-      .hero-title { font-size: 3.35rem; }
+      .hero-section { margin-bottom: 1.85rem; padding-bottom: 1.6rem; }
+      .hero-eyebrow { font-size: 0.75rem; margin-bottom: 0.65rem; }
+      .hero-eyebrow::before, .hero-eyebrow::after { width: 2.25rem; }
+      .hero-title { margin-bottom: 0.9rem; }
+      .hero-steps { font-size: 0.9375rem; gap: 0.4rem 0.75rem; margin-bottom: 1.1rem; }
+      .hero-step-num { width: 1.25rem; height: 1.25rem; font-size: 0.72rem; }
+      .hero-badge { font-size: 0.8125rem; padding: 0.42rem 1.05rem; }
     }
 
     /* Brand Filter */
@@ -291,17 +296,18 @@
   <!-- ==================== MAIN CONTENT ==================== -->
   <main>
     <section class="hero-section">
-      <h1 class="hero-title">
-        <span style="display: block; color: #B89146; font-weight: 700;">WuHuo Factory</span>
-        <span style="display: block; margin-top: 0.3rem; font-size: clamp(0.95rem, 4.3vw, 2.55rem); line-height: 1.2; white-space: nowrap;">Premium Fragrance Collection</span>
-      </h1>
-      <p class="hero-desc">
-        Explore the collection, choose your favorites and quantities,<br class="hero-br" />
-        then copy your selection and send it to us for a quote.
-      </p>
+      <p class="hero-eyebrow">WuHuo Factory</p>
+      <h1 class="hero-title">Premium Fragrance Collection</h1>
+      <div class="hero-steps" aria-label="How to request a quote">
+        <span class="hero-step"><span class="hero-step-num">1</span>Pick styles</span>
+        <span class="hero-step-sep" aria-hidden="true">→</span>
+        <span class="hero-step"><span class="hero-step-num">2</span>Set quantities</span>
+        <span class="hero-step-sep" aria-hidden="true">→</span>
+        <span class="hero-step"><span class="hero-step-num">3</span>Copy list for wholesale pricing</span>
+      </div>
       <div class="hero-badge">
         <span class="hero-dot"></span>
-        <span>US Warehouse · <strong style="color: #E2BE74;">2–5 Business Day Delivery</strong></span>
+        <span>US Warehouse · <strong>2–5 Business Day Delivery</strong></span>
       </div>
     </section>
 
@@ -384,7 +390,7 @@
 
           <div class="details-eyebrow">Brand House</div>
           <h3 id="modal-brand-title">Dior</h3>
-          <p id="modal-custom-subtitle">Catalog Style #01 · USA Warehouse Fast Delivery</p>
+          <p id="modal-custom-subtitle">Catalog Style #01 · US Warehouse · 2–5 Business Day Delivery</p>
 
           <button type="button" id="modal-filter-by-brand-btn">
             <span>View all styles from this brand</span>
@@ -451,7 +457,7 @@
           <span id="drawer-styles-selected" style="color:var(--text-secondary);font-weight:500;">0 styles selected</span>
           <strong id="drawer-items-total">0 items total</strong>
         </div>
-        <p class="drawer-hint">Copy your selection and send it to us for a quote.</p>
+        <p class="drawer-hint">Copy your selection and message us for wholesale pricing.</p>
 
         <div id="manual-copy-box" class="hidden">
           <div class="manual-copy-head">
@@ -490,7 +496,7 @@
       const STORAGE_KEY_SELECTION = 'wuhuo_perfume_selection_176_v1';
 
       // Out-of-stock product IDs to hide, e.g. [5, 14, 102]
-      const HIDDEN_PRODUCT_IDS = [89, ];
+      const HIDDEN_PRODUCT_IDS = [89];
       const HIDDEN_SET = new Set(
         HIDDEN_PRODUCT_IDS
           .map(v => parseInt(String(v).replace(/[^\d]/g, ''), 10))
@@ -502,7 +508,6 @@
         localStorage.removeItem('wuhuo_perfume_img_mode_v2');
       } catch (e) {}
 
-      let localFolderMode = '';
       let currentFilteredList = [];
       let renderedCount = 0;
 
@@ -606,15 +611,6 @@
             ...shardedCdns
           ]));
         }
-        if (localFolderMode === 'images') {
-          return Array.from(new Set([...localVariants, ...shardedCdns]));
-        }
-        if (localFolderMode === 'root') {
-          return Array.from(new Set([`./${n1}%E6%AD%A3.webp`, `./${n1}%E6%AD%A3.jpg`, `./${n2}%E6%AD%A3.jpg`, `./${n1}.jpg`, `./${n1}.JPG`, ...shardedCdns]));
-        }
-        if (localFolderMode === 'pad2') {
-          return Array.from(new Set([`./${n2}%E6%AD%A3.webp`, `./${n2}%E6%AD%A3.jpg`, `./${n1}%E6%AD%A3.jpg`, `./${n2}.jpg`, `./${n2}.JPG`, ...shardedCdns]));
-        }
         return Array.from(new Set([...shardedCdns, ...localVariants]));
       }
 
@@ -696,7 +692,7 @@
             padded3,
             brand: defaultBrand,
             note: verified.note || '',
-            volume: verified.volume || (id % 2 === 0 ? '125ML' : '100ML')
+            volume: verified.volume || ''
           };
         });
         visibleCatalog = catalog.filter(item => !HIDDEN_SET.has(item.id));
@@ -1029,11 +1025,13 @@
         const isSelected = qty > 0;
         const primaryUrl = getCandidateUrls(item.id, false)[0];
         const isEager = globalIndex < 8;
+        const volumeBadgeHtml = item.volume ? `<span class="ml-badge">${item.volume}</span>` : '';
+        const cardTitleText = item.note ? `${item.brand} ${item.note}` : `${item.brand} · Style ${item.code}`;
         return `
           <article class="perfume-card ${isSelected ? 'is-selected' : ''}" data-product-id="${item.id}">
             <div class="card-image-wrap" data-open-details="${item.id}">
               <span class="style-code-badge">${item.code}</span>
-              <span class="ml-badge">${item.volume}</span>
+              ${volumeBadgeHtml}
               <span class="selected-qty-pill ${isSelected ? '' : 'hidden'}" data-card-pill="${item.id}">✓ ${qty}</span>
               <img
                 src="${primaryUrl}"
@@ -1051,7 +1049,7 @@
             <div class="card-body">
               <div class="card-info" data-open-details="${item.id}">
                 <div class="card-brand">${item.brand.toUpperCase()}</div>
-                <div class="card-title">${item.brand} ${item.note || 'Eau de Parfum'}</div>
+                <div class="card-title">${cardTitleText}</div>
               </div>
               <div data-card-action-wrap="${item.id}">
                 ${getCardActionMarkup(item.id, item.code, qty)}
@@ -1276,9 +1274,10 @@
         modalNextBtn.classList.toggle('hidden', !showNavBtns);
 
         modalBrandTitle.textContent = item.brand;
+        const volumePart = item.volume ? ` (${item.volume})` : '';
         modalCustomSubtitle.textContent = item.note
-          ? `${item.note} (${item.volume}) · USA Warehouse Fast Delivery`
-          : `Catalog Style ${item.code} (${item.volume}) · USA Warehouse Fast Delivery`;
+          ? `${item.note}${volumePart} · US Warehouse · 2–5 Business Day Delivery`
+          : `Catalog Style ${item.code}${volumePart} · US Warehouse · 2–5 Business Day Delivery`;
 
         const token = ++modalLoadToken;
         const candidates = getCandidateUrls(numericId, true);
@@ -1336,24 +1335,6 @@
           pushModalHistoryIfNeeded();
           detailsDialog.showModal();
         }
-      }
-
-      function checkLocalRepoInBackground() {
-        const probes = [
-          { mode: 'root', url: './1%E6%AD%A3.jpg' },
-          { mode: 'pad2', url: './01%E6%AD%A3.jpg' },
-          { mode: 'images', url: './images/1%E6%AD%A3.jpg' }
-        ];
-        probes.forEach(p => {
-          const img = new Image();
-          img.onload = () => {
-            if (!localFolderMode && img.naturalWidth > 0) {
-              localFolderMode = p.mode;
-              renderCatalogGrid();
-            }
-          };
-          img.src = p.url;
-        });
       }
 
       if ('IntersectionObserver' in window) {
@@ -1694,7 +1675,6 @@
       renderBrandPills();
       renderCatalogGrid();
       updateSelectionSummaryUI();
-      checkLocalRepoInBackground();
       setTimeout(recoverStalledImages, 2000);
       window.scrollTo(0, 0);
     })();
